@@ -12,6 +12,8 @@ import torch
 import torch.backends.cudnn as cudnn
 from numpy import random
 
+random.seed(44165)
+
 sys.path.insert(0, './yolov12')  # Adjust path to YOLOv12 repo
 
 from yolov7.models.experimental import attempt_load
@@ -86,7 +88,8 @@ def detect(save_img=False):
         print('='*10, folderPath, '='*10)
 
         # Directories
-        save_dir = Path(increment_path(Path(opt.project) / opt.name, exist_ok=opt.exist_ok))  # increment run
+        # save_dir = Path(increment_path(Path(opt.project) / opt.name, exist_ok=opt.exist_ok))  # increment run
+        save_dir = Path(Path(opt.project) / foldern, exist_ok=opt.exist_ok)
         (save_dir / 'labels' if save_txt else save_dir).mkdir(parents=True, exist_ok=True)  # make dir
 
         # Set Dataloader
@@ -253,10 +256,10 @@ def detect(save_img=False):
 
                             if save_img or view_img:  # Add bbox to image
                                 if opt.hide_labels_name:
-                                    label = f'{tid}, {int(tcls)}'
+                                    label = f'{tid}'
                                 else:
                                     label = f'{tid}, {names[int(tcls)]}'
-                                plot_one_box(tlbr, im0, label=label, color=colors[int(tid) % len(colors)], line_thickness=2)
+                                plot_one_box(tlbr, im0, label=label, color=colors[int(tid) % len(colors)], line_thickness=1)
                     p = Path(p)  # to Path
                     save_path = str(save_dir / p.name)  # img.jpg
 

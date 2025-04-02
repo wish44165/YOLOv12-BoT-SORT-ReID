@@ -108,18 +108,22 @@ $ cd BoT-SORT/
 
 # Track 1
 $ python3 tools/predict_track1.py --weights ./yolov12/weights/SOT_yolov12l.pt --source ../data/demo/SOT/Track1/ --img-size 640 --device "0" --conf-thres 0.01 --iou-thres 0.01 --track_high_thresh 0.1 --track_low_thresh 0.01 --fuse-score --agnostic-nms --min_box_area 4 --save_path_answer ./submit/track1/demo --hide-labels-name
+# output: ./runs/detect/, ./submit/track1/demo/
 
 # Track 2
 $ python3 tools/predict_track2.py --weights ./yolov12/weights/SOT_yolov12l.pt --source ../data/demo/SOT/Track2/ --img-size 640 --device "0" --conf-thres 0.01 --iou-thres 0.01 --track_high_thresh 0.1 --track_low_thresh 0.01 --fuse-score --agnostic-nms --min_box_area 1 --save_path_answer ./submit/track2/demo --hide-labels-name
+# output: ./runs/detect/, ./submit/track2/demo/
 
 # Track 3
-$ python3 tools/predict_track3.py --weights ./yolov12/weights/MOT_yolov12n.pt --source ../test/MultiUAV_Test/ --img-size 1600 --device "0" --track_buffer 60 --save_path_answer ./submit/track3/demo --hide-labels-name
+$ python3 tools/predict_track3.py --weights ./yolov12/weights/MOT_yolov12n.pt --source ../data/demo/MOT/ --img-size 1600 --device "0" --track_buffer 60 --save_path_answer ./submit/track3/demo --hide-labels-name
+# output: ./runs/detect/, ./submit/track3/demo/
 
 # Heatmap
 $ cd yolov12/
 $ python heatmap.py
+# output: ./outputs/
 ```
-  
+
 </details>
 
 
@@ -219,7 +223,10 @@ Details soon
 
 ## ✨ Models
 
-Details soon
+| Model                                                                                | size<br><sup>(pixels) | mAP<sup>val<br>50-95 | params<br><sup>(M) | FLOPs<br><sup>(G) |
+| :----------------------------------------------------------------------------------- | :-------------------: | :-------------------:| :-----------------:| :---------------:|
+| [SOT_yolov12l.pt](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID/blob/main/BoT-SORT/yolov12/weights/SOT_yolov12l.pt) | 640                   | 67.2                 | 26.3                | 88.5               |
+| [MOT_yolov12n.pt](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID/blob/main/BoT-SORT/yolov12/weights/MOT_yolov12n.pt) | 1600                   | 77.7                 | 2.6                | 6.3              |
 
 
 

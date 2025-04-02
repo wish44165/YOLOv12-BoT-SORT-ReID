@@ -1,3 +1,8 @@
+# --------------------------------------------------------
+# Based on yolov12
+# https://github.com/sunsmarterjie/yolov12/issues/74
+# --------------------------------------------------------'
+
 import os
 import cv2
 import torch
