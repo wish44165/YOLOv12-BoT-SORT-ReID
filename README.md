@@ -4,7 +4,7 @@
 
 
 [![arXiv](https://img.shields.io/badge/arXiv-2503.17237-b31b1b.svg)](https://arxiv.org/pdf/2503.17237)
-[![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/release/python-3110/)
+[![PyPI - Python Version](https://img.shields.io/badge/python-3.11-blue.svg?logo=python&logoColor=gold)](https://www.python.org/downloads/release/python-3110/)
 
 
 
@@ -51,7 +51,7 @@ Details soon
 $ conda create -n yolov12_botsort python=3.11 -y
 $ conda activate yolov12_botsort
 $ git clone https://github.com/wish44165/YOLOv12-BoT-SORT-ReID.git
-$ cd YOLOv12-BoT-SORT-ReID/yolov12/
+$ cd YOLOv12-BoT-SORT-ReID/BoT-SORT/yolov12/
 $ wget https://github.com/Dao-AILab/flash-attention/releases/download/v2.7.3/flash_attn-2.7.3+cu11torch2.2cxx11abiFALSE-cp311-cp311-linux_x86_64.whl
 $ pip install -r requirements.txt
 $ pip install -e .
@@ -158,7 +158,7 @@ $ python heatmap.py
 
 <details><summary>Officially Released</summary>
 
-- [Official Dataset Release for the 4th Anti-UAV Challenge](https://zenodo.org/records/15103888)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15103888.svg)](https://doi.org/10.5281/zenodo.15103888)
 
 ```
 4th_Anti-UAV_Challenge/

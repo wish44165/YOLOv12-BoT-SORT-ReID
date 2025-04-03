@@ -3,7 +3,6 @@ import time
 from pathlib import Path
 import sys
 from ultralytics import YOLO
-import gc
 import os
 import cv2
 import copy
@@ -14,21 +13,18 @@ from numpy import random
 
 random.seed(44165)
 
-sys.path.insert(0, './yolov12')  # Adjust path to YOLOv12 repo
+sys.path.append('.')
 
-from yolov7.models.experimental import attempt_load
-from yolov7.utils.datasets import LoadStreams, LoadImages
-from yolov7.utils.general import check_img_size, check_requirements, check_imshow, \
+from yolov12.models.experimental import attempt_load
+from yolov12.utils.datasets import LoadStreams, LoadImages
+from yolov12.utils.general import check_img_size, check_requirements, check_imshow, \
     apply_classifier, \
     scale_coords, xyxy2xywh, strip_optimizer, set_logging, increment_path
-from yolov7.utils.plots import plot_one_box
-from yolov7.utils.torch_utils import select_device, load_classifier, time_synchronized, TracedModel
+from yolov12.utils.plots import plot_one_box
+from yolov12.utils.torch_utils import select_device, load_classifier, time_synchronized, TracedModel
 
 from tracker.mc_bot_sort import BoTSORT
 from tracker.tracking_utils.timer import Timer
-
-sys.path.insert(0, './yolov7')  # Adjust path to YOLOv12 repo
-sys.path.append('.')
 
 def write_results(filename, results):
     save_format = '{frame},{id},{x1},{y1},{w},{h},{s},-1,-1,-1\n'
@@ -312,30 +308,18 @@ def detect(save_img=False):
         # check number of box equals to the number of frame
         ################
         numberFrames = os.listdir(folderPath)
-        print('len(numberFrames) =', len(numberFrames))
-        print('len(res_list)', len(res_list))
+        # print('len(numberFrames) =', len(numberFrames))
+        # print('len(res_list)', len(res_list))
         # save submit file
         answer_file = os.path.join(opt.save_path_answer, f"{foldern}.txt")
         with open(answer_file, "w") as file:
             for row in res_list:
                 file.write(",".join(map(str, row)) + "\n")  # Convert each element to string and join with ','
+
+        print('.jpg saved to: {}'.format(save_dir))
+        print('.txt saved to: {}'.format(opt.save_path_answer))
         print(f'Done. ({time.time() - t0:.3f}s)')
 
-
-        ################
-        # clean up
-        ################
-        # Delete large variables that are no longer needed
-        del dataset
-        del tracker
-        del res_list
-
-        # Clear GPU cache if using CUDA
-        if device.type != 'cpu':
-            torch.cuda.empty_cache()
-
-        # Run garbage collection to release unreferenced memory
-        gc.collect()
 
 
 
