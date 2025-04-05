@@ -5,7 +5,14 @@
 
 [![arXiv](https://img.shields.io/badge/arXiv-2503.17237-b31b1b.svg)](https://arxiv.org/pdf/2503.17237)
 [![PyPI - Python Version](https://img.shields.io/badge/python-3.11-blue.svg?logo=python&logoColor=gold)](https://www.python.org/downloads/release/python-3110/)
+[![Hugging Face Demo](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/wish44165/YOLOv12-BoT-SORT-ReID) 
 [![Colab Notebook](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1x5T6woUdV6dD_T6qdYcKG04Q2iVVHGoD?usp=sharing)
+[![Kaggle Notebook](https://img.shields.io/badge/Kaggle-Notebook-blue?logo=kaggle)](https://www.kaggle.com/code/yuhsi44165/yolov12-bot-sort/)
+
+<a href="https://dashboard.hpc.unimelb.edu.au/"><img src="https://github.com/wish44165/wish44165/blob/main/assets/unimelb_spartan.svg" alt="Spartan"></a> 
+<a href="https://github.com/wish44165/wish44165/tree/main/assets"><img src="https://github.com/wish44165/wish44165/blob/main/assets/msi_Cyborg_15_A12VE_badge.svg" alt="Spartan"></a> 
+
+[![ResearchGate](https://img.shields.io/badge/ResearchGate-00CCBB?style=for-the-badge&logo=ResearchGate&logoColor=white)](https://www.researchgate.net/publication/390114692_Strong_Baseline_Multi-UAV_Tracking_via_YOLOv12_with_BoT-SORT-ReID)
 
 
 
@@ -45,6 +52,8 @@ Details soon
 
 ## 🚀 Quickstart: Installation and Demonstration
 
+[![Colab Notebook](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1x5T6woUdV6dD_T6qdYcKG04Q2iVVHGoD?usp=sharing)
+[![Kaggle Notebook](https://img.shields.io/badge/Kaggle-Notebook-blue?logo=kaggle)](https://www.kaggle.com/code/yuhsi44165/yolov12-bot-sort/)
 
 <details><summary>Installation</summary>
 
@@ -141,11 +150,15 @@ $ python heatmap.py
 
 ### Laptop
 
+<a href="https://github.com/wish44165/wish44165/tree/main/assets"><img src="https://github.com/wish44165/wish44165/blob/main/assets/msi_Cyborg_15_A12VE_badge.svg" alt="Spartan"></a> 
+
 - CPU: Intel® Core™ i7-12650H
 - GPU: NVIDIA GeForce RTX 4050 Laptop GPU (6GB)
 - RAM: 23734MiB
 
 ### HPC
+
+<a href="https://dashboard.hpc.unimelb.edu.au/"><img src="https://github.com/wish44165/wish44165/blob/main/assets/unimelb_spartan.svg" alt="Spartan"></a> 
 
 - GPU: Spartan gpu-h100 (80GB), gpu-a100 (80GB)
   
@@ -228,17 +241,6 @@ Details soon
 | :----------------------------------------------------------------------------------- | :-------------------: | :-------------------:| :-----------------:| :---------------:|
 | [SOT_yolov12l.pt](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID/blob/main/BoT-SORT/yolov12/weights/SOT_yolov12l.pt) | 640                   | 67.2                 | 26.3                | 88.5               |
 | [MOT_yolov12n.pt](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID/blob/main/BoT-SORT/yolov12/weights/MOT_yolov12n.pt) | 1600                   | 77.7                 | 2.6                | 6.3              |
-
-
-
-
-
-
-
-
-## 🧩 Integration
-
-Details soon
 
 
 
