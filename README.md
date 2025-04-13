@@ -9,6 +9,7 @@
 [![Colab Notebook](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1x5T6woUdV6dD_T6qdYcKG04Q2iVVHGoD?usp=sharing)
 [![Kaggle Notebook](https://img.shields.io/badge/Kaggle-Notebook-blue?logo=kaggle)](https://www.kaggle.com/code/yuhsi44165/yolov12-bot-sort/)
 
+<a href="https://doi.org/10.5281/zenodo.15203123"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.15203123.svg" alt="DOI"></a>
 <a href="https://github.com/wish44165/wish44165/tree/main/assets"><img src="https://github.com/wish44165/wish44165/blob/main/assets/msi_Cyborg_15_A12VE_badge.svg" alt="MSI"></a> 
 <a href="https://dashboard.hpc.unimelb.edu.au/"><img src="https://github.com/wish44165/wish44165/blob/main/assets/unimelb_spartan.svg" alt="Spartan"></a> 
 
@@ -43,7 +44,11 @@ This repository provides a strong baseline for multi-UAV tracking in thermal inf
 
 ## 🗞️ News
 
-- April 7, 2025: [arXiv](https://arxiv.org/abs/2503.17237), demo ([Hugging Face](https://huggingface.co/spaces/wish44165/YOLOv12-BoT-SORT-ReID), [YouTube](https://www.youtube.com/playlist?list=PLfr5E6mAx5EUpqP41CPSm5Nwfqe35iwtl)), quickstart ([Colab](https://colab.research.google.com/drive/1x5T6woUdV6dD_T6qdYcKG04Q2iVVHGoD?usp=sharing), [Kaggle](https://www.kaggle.com/code/yuhsi44165/yolov12-bot-sort/)), and [project page](https://sites.google.com/view/wish44165/home/academic-activities/2025/strong-baseline-multi-uav-tracking-via-yolov12-with-bot-sort-reid) are now available.
+- **April 13, 2025**: The [datasets](https://zenodo.org/records/15203123) presented in Table 2 of the [paper](https://arxiv.org/abs/2503.17237) are now available.
+- **April 7, 2025**: Our paper is now on [arXiv](https://arxiv.org/abs/2503.17237).
+  - 🎥 Demos: [Hugging Face](https://huggingface.co/spaces/wish44165/YOLOv12-BoT-SORT-ReID) | [YouTube](https://www.youtube.com/playlist?list=PLfr5E6mAx5EUpqP41CPSm5Nwfqe35iwtl)  
+  - 🚀 Quickstart: [Colab Notebook](https://colab.research.google.com/drive/1x5T6woUdV6dD_T6qdYcKG04Q2iVVHGoD?usp=sharing) | [Kaggle Notebook](https://www.kaggle.com/code/yuhsi44165/yolov12-bot-sort/)  
+  - 🌐 Project Page: [Link](https://sites.google.com/view/wish44165/home/academic-activities/2025/strong-baseline-multi-uav-tracking-via-yolov12-with-bot-sort-reid)
 
 
 
@@ -145,7 +150,7 @@ $ python heatmap.py
 
 
 
-## 🌟 Implementation Details
+## 🛠️ Implementation Details
 
 
 <details><summary>Hardware Information</summary>
@@ -195,6 +200,8 @@ $ python heatmap.py
 
 <details><summary>Strong Baseline</summary>
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15203123.svg)](https://doi.org/10.5281/zenodo.15203123)
+
 ```
 train/
 ├── MOT/
@@ -226,7 +233,7 @@ Details soon
 
 
 
-### 🔩 Reproduction
+### 🔨 Reproduction
 
 Details soon
 

@@ -1,1 +1,1 @@
-details soon
+The tracking result images will be saved in this folder.
