@@ -44,7 +44,7 @@ This repository provides a strong baseline for multi-UAV tracking in thermal inf
 
 ## 🗞️ News
 
-- **April 13, 2025**: The [datasets](https://zenodo.org/records/15203123) presented in Table 2 of the [paper](https://arxiv.org/abs/2503.17237) are now available.
+- **April 13, 2025**: The [datasets](https://zenodo.org/records/15203123) presented in Table 2 of the [paper](https://arxiv.org/pdf/2503.17237) are now available.
 - **April 7, 2025**: Our paper is now on [arXiv](https://arxiv.org/abs/2503.17237).
   - 🎥 Demos: [Hugging Face](https://huggingface.co/spaces/wish44165/YOLOv12-BoT-SORT-ReID) | [YouTube](https://www.youtube.com/playlist?list=PLfr5E6mAx5EUpqP41CPSm5Nwfqe35iwtl)  
   - 🚀 Quickstart: [Colab Notebook](https://colab.research.google.com/drive/1x5T6woUdV6dD_T6qdYcKG04Q2iVVHGoD?usp=sharing) | [Kaggle Notebook](https://www.kaggle.com/code/yuhsi44165/yolov12-bot-sort/)  
@@ -228,7 +228,48 @@ Details soon
 
 ### 📂 Folder Structure
 
-Details soon
+Follow the folder structure below to ensure smooth execution and easy navigation.
+
+```
+YOLOv12-BoT-SORT-ReID/
+├── BoT-SORT/
+│   ├── datasets/
+│   │   └── README.md
+│   ├── fast_reid/
+│   │   └── datasets/
+│   │       ├── generate_mot_patches.py
+│   │       └── README.md
+│   ├── logs/
+│   │   └── README.md
+│   ├── requirements.txt
+│   ├── runs/
+│   │   └── README.md
+│   ├── submit/
+│   │   └── README.md
+│   ├── tools/
+│   │   ├── predict_track1.py
+│   │   ├── predict_track2.py
+│   │   └── predict_track3.py
+│   └── yolov12/
+│       ├── heatmap.py
+│       ├── imgs_dir/
+│       │   ├── 00096.jpg
+│       │   ├── 00379.jpg
+│       │   ├── 00589.jpg
+│       │   └── 00643.jpg
+│       ├── requirements.txt
+│       └── weights/
+│           ├── MOT_yolov12n.pt
+│           └── SOT_yolov12l.pt
+├── data/
+│   ├── demo/
+│   ├── MOT/
+│   │   └── README.md
+│   └── SOT/
+│       └── README.md
+├── LICENSE
+└── README.md
+```
 
 
 
