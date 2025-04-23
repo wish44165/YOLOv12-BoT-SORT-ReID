@@ -201,6 +201,7 @@ $ python heatmap.py
 <details><summary>Strong Baseline</summary>
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15203123.svg)](https://doi.org/10.5281/zenodo.15203123)
+[![Hugging Face Datasets](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Datasets-blue)](https://huggingface.co/datasets/wish44165/StrongBaseline_YOLOv12-BoT-SORT-ReID) 
 
 ```
 train/
@@ -217,9 +218,21 @@ train/
 </details>
 
 
-<details><summary>Enhancement</summary>
+<details><summary>Enhancements</summary>
 
-Details soon
+
+
+```
+enhancements/
+├── MOT/
+│   ├── CLAHE_train_val.zip
+│   ├── Sobel-based_Edge_Sharpening_train_val.zip
+│   └── Sobel-based_Image_Gradients_train_val.zip
+└── ReID/
+    ├── CLAHE_subset.zip
+    ├── Sobel-based_Edge_Sharpening_subset.zip
+    └── Sobel-based_Image_Gradients_subset.zip
+```
 
 </details>
 
@@ -240,6 +253,9 @@ YOLOv12-BoT-SORT-ReID/
 │   │       ├── generate_mot_patches.py
 │   │       └── README.md
 │   ├── logs/
+│   │   ├── sbs_S50/
+│   │   │   ├── config.yaml
+│   │   │   └── model_0016.pth
 │   │   └── README.md
 │   ├── requirements.txt
 │   ├── runs/
@@ -276,7 +292,27 @@ YOLOv12-BoT-SORT-ReID/
 
 ### 🔨 Reproduction
 
-Details soon
+```bash
+$ cd BoT-SORT/
+
+# Track 1
+$ python3 tools/predict_track1.py --weights ./yolov12/weights/SOT_yolov12l.pt --source ../data/SOT/track1_test/ --img-size 640 --device "0" --conf-thres 0.01 --iou-thres 0.01 --track_high_thresh 0.1 --track_low_thresh 0.01 --fuse-score --agnostic-nms --min_box_area 4 --save_path_answer ./submit/track1/test --hide-labels-name
+# output: ./runs/detect/, ./submit/track1/test/
+
+# Track 2
+$ python3 tools/predict_track2.py --weights ./yolov12/weights/SOT_yolov12l.pt --source ../data/SOT/track2_test/ --img-size 640 --device "0" --conf-thres 0.01 --iou-thres 0.01 --track_high_thresh 0.1 --track_low_thresh 0.01 --fuse-score --agnostic-nms --min_box_area 1 --save_path_answer ./submit/track2/test --hide-labels-name
+# output: ./runs/detect/, ./submit/track2/test/
+
+# Track 3
+$ chmod +x run_track3.sh
+$ ./run_track3.sh
+# output: ./runs/detect/, ./submit/track3/test/
+
+# Heatmap
+$ cd yolov12/
+$ python heatmap.py
+# output: ./outputs/
+```
 
 
 
@@ -287,10 +323,12 @@ Details soon
 
 ## ✨ Models
 
+[![Hugging Face Models](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Models-blue)](https://huggingface.co/wish44165/YOLOv12-BoT-SORT-ReID) 
+
 | Model                                                                                | size<br><sup>(pixels) | mAP<sup>val<br>50-95 | params<br><sup>(M) | FLOPs<br><sup>(G) |
 | :----------------------------------------------------------------------------------- | :-------------------: | :-------------------:| :-----------------:| :---------------:|
 | [SOT_yolov12l.pt](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID/blob/main/BoT-SORT/yolov12/weights/SOT_yolov12l.pt) | 640                   | 67.2                 | 26.3                | 88.5               |
-| [MOT_yolov12n.pt](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID/blob/main/BoT-SORT/yolov12/weights/MOT_yolov12n.pt) | 1600                   | 77.7                 | 2.6                | 6.3              |
+| [MOT_yolov12n.pt](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID/blob/main/BoT-SORT/yolov12/weights/MOT_yolov12n.pt) ([ReID](https://huggingface.co/wish44165/YOLOv12-BoT-SORT-ReID/tree/main/sbs_S50)) | 1600                   | 77.7                 | 2.6                | 6.3              |
 
 
 
