@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Set the base directory containing the test folders
+# Set the base directory containing the test folders for Track 3
 SOURCE_DIR="../data/MOT/MultiUAV_Test/Test_imgs"
 
 # Loop through each subdirectory in SOURCE_DIR

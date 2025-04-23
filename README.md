@@ -44,11 +44,12 @@ This repository provides a strong baseline for multi-UAV tracking in thermal inf
 
 ## 🗞️ News
 
+- **April 23, 2025**: Strong Baseline weights available: [YOLOv12](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID/tree/main/BoT-SORT/yolov12/weights) | [ReID](https://huggingface.co/wish44165/YOLOv12-BoT-SORT-ReID/tree/main) .
 - **April 13, 2025**: The [datasets](https://zenodo.org/records/15203123) presented in Table 2 of the [paper](https://arxiv.org/pdf/2503.17237) are now available.
-- **April 7, 2025**: Our paper is now on [arXiv](https://arxiv.org/abs/2503.17237).
-  - 🎥 Demos: [Hugging Face](https://huggingface.co/spaces/wish44165/YOLOv12-BoT-SORT-ReID) | [YouTube](https://www.youtube.com/playlist?list=PLfr5E6mAx5EUpqP41CPSm5Nwfqe35iwtl)  
-  - 🚀 Quickstart: [Colab Notebook](https://colab.research.google.com/drive/1x5T6woUdV6dD_T6qdYcKG04Q2iVVHGoD?usp=sharing) | [Kaggle Notebook](https://www.kaggle.com/code/yuhsi44165/yolov12-bot-sort/)  
-  - 🌐 Project Page: [Link](https://sites.google.com/view/wish44165/home/academic-activities/2025/strong-baseline-multi-uav-tracking-via-yolov12-with-bot-sort-reid)
+- **April 7, 2025**: Our paper is now on [arXiv](https://arxiv.org/abs/2503.17237) .
+    - 🎥 Demos: [Hugging Face](https://huggingface.co/spaces/wish44165/YOLOv12-BoT-SORT-ReID) | [YouTube](https://www.youtube.com/playlist?list=PLfr5E6mAx5EUpqP41CPSm5Nwfqe35iwtl)  
+    - 🚀 Quickstart: [Colab Notebook](https://colab.research.google.com/drive/1x5T6woUdV6dD_T6qdYcKG04Q2iVVHGoD?usp=sharing) | [Kaggle Notebook](https://www.kaggle.com/code/yuhsi44165/yolov12-bot-sort/)  
+    - 🌐 Project Page: [Link](https://sites.google.com/view/wish44165/home/academic-activities/2025/strong-baseline-multi-uav-tracking-via-yolov12-with-bot-sort-reid)
 
 
 
@@ -80,7 +81,7 @@ $ pip3 install cython; pip3 install 'git+https://github.com/cocodataset/cocoapi.
 $ pip3 install cython_bbox
 $ pip3 install faiss-cpu
 ```
-  
+
 </details>
 
 
@@ -114,7 +115,7 @@ YOLOv12-BoT-SORT-ReID/
 │               └── wg2022_ir_032_split_04/
 └── BoT-SORT/
 ```
-  
+
 </details>
 
 
@@ -194,7 +195,7 @@ $ python heatmap.py
     ├── MultiUAV_Train.zip
     └── train.zip
 ```
-  
+
 </details>
 
 
@@ -243,6 +244,8 @@ enhancements/
 
 Follow the folder structure below to ensure smooth execution and easy navigation.
 
+<details><summary>Folder Structure</summary>
+
 ```
 YOLOv12-BoT-SORT-ReID/
 ├── BoT-SORT/
@@ -287,10 +290,22 @@ YOLOv12-BoT-SORT-ReID/
 └── README.md
 ```
 
+</details>
+
 
 
 
 ### 🔨 Reproduction
+
+
+<details><summary>Train</summary>
+
+Details soon.
+
+</details>
+
+
+<details><summary>Inference</summary>
 
 ```bash
 $ cd BoT-SORT/
@@ -307,12 +322,9 @@ $ python3 tools/predict_track2.py --weights ./yolov12/weights/SOT_yolov12l.pt --
 $ chmod +x run_track3.sh
 $ ./run_track3.sh
 # output: ./runs/detect/, ./submit/track3/test/
-
-# Heatmap
-$ cd yolov12/
-$ python heatmap.py
-# output: ./outputs/
 ```
+
+</details>
 
 
 
