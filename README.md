@@ -25,7 +25,7 @@ This repository provides a strong baseline for multi-UAV tracking in thermal inf
 
 
 
-📹 Preview:
+📹 Preview - Strong Baseline
 
 [strong_baseline.webm](https://github.com/user-attachments/assets/702b3e80-fd3c-48f0-8032-a2a97563c19f)
 
@@ -38,14 +38,25 @@ This repository provides a strong baseline for multi-UAV tracking in thermal inf
 
 
 
+---
+
+
+
+
+📹 Preview - Single-Frame Enhancements
+
+[enhancements_MultiUAV-261.webm](https://github.com/user-attachments/assets/f1dd3877-d898-45c2-93c9-26f677020e07)
+
+🔗 Full video available at: [Enhancements](https://youtu.be/lkIlYCjz8r4?si=7jpgs5OAEeABNVGo)
 
 
 
 
 ## 🗞️ News
 
+- **April 25, 2025**: Single-Frame Enhancement [datasets](https://doi.org/10.5281/zenodo.15276582) are now available.
 - **April 23, 2025**: Strong Baseline weights available: [YOLOv12](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID/tree/main/BoT-SORT/yolov12/weights) | [ReID](https://huggingface.co/wish44165/YOLOv12-BoT-SORT-ReID/tree/main) .
-- **April 13, 2025**: The [datasets](https://zenodo.org/records/15203123) presented in Table 2 of the [paper](https://arxiv.org/pdf/2503.17237) are now available.
+- **April 13, 2025**: The [datasets](https://doi.org/10.5281/zenodo.15203123) presented in Table 2 of the [paper](https://arxiv.org/pdf/2503.17237) are now available.
 - **April 7, 2025**: Our paper is now on [arXiv](https://arxiv.org/abs/2503.17237) .
     - 🎥 Demos: [Hugging Face](https://huggingface.co/spaces/wish44165/YOLOv12-BoT-SORT-ReID) | [YouTube](https://www.youtube.com/playlist?list=PLfr5E6mAx5EUpqP41CPSm5Nwfqe35iwtl)  
     - 🚀 Quickstart: [Colab Notebook](https://colab.research.google.com/drive/1x5T6woUdV6dD_T6qdYcKG04Q2iVVHGoD?usp=sharing) | [Kaggle Notebook](https://www.kaggle.com/code/yuhsi44165/yolov12-bot-sort/)  
@@ -196,6 +207,14 @@ $ python heatmap.py
     └── train.zip
 ```
 
+- Train
+    - Track 1 & Track 2: [Google Drive](https://drive.google.com/drive/folders/1hEGq14WnfPstYrI_9OgscR1VsWc5_XDl) | [Baidu](https://pan.baidu.com/s/1rtZ_PkYX__Bt2O5MgTj1tg?pwd=CVPR)
+    - Track 3: [Google Drive](https://drive.google.com/drive/folders/1JvGdAJjGzjOIGMG82Qiz5YJKzjy8VOd-?usp=drive_link) | [Baidu](https://pan.baidu.com/s/19iVwI1MW9OdXyPIc0xBSjQ?from=init&pwd=CVPR)
+- Test
+    - Track 1: [Google Drive](https://drive.google.com/drive/folders/1qkUeglLk9-OXniIUVh1r7OljDLwDNhBs?usp=sharing) | [Baidu](https://pan.baidu.com/s/13HFq5P0gWrdlBerFZBKbuA?pwd=cvpr)
+    - Track 2: [Google Drive](https://drive.google.com/drive/folders/1qkUeglLk9-OXniIUVh1r7OljDLwDNhBs?usp=sharing) | [Baidu](https://pan.baidu.com/s/1s7KkyjgXP1v495EULqwoew?pwd=cvpr)
+    - Track 3: [Google Drive](https://drive.google.com/drive/folders/1cfF00w_3ewUMELSSnmaYOKLTZoIWlxbF?usp=sharing) | [Baidu](https://pan.baidu.com/s/1rhB24tksTw1JW6ZltOSvOg?pwd=CVPR)
+
 </details>
 
 
@@ -221,7 +240,7 @@ train/
 
 <details><summary>Enhancements</summary>
 
-
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15276582.svg)](https://doi.org/10.5281/zenodo.15276582)
 
 ```
 enhancements/
@@ -242,9 +261,9 @@ enhancements/
 
 ### 📂 Folder Structure
 
-Follow the folder structure below to ensure smooth execution and easy navigation.
+<details><summary>Project Layout</summary>
 
-<details><summary>Folder Structure</summary>
+Follow the folder structure below to ensure smooth execution and easy navigation.
 
 ```
 YOLOv12-BoT-SORT-ReID/
@@ -297,15 +316,7 @@ YOLOv12-BoT-SORT-ReID/
 
 ### 🔨 Reproduction
 
-
-<details><summary>Train</summary>
-
-Details soon.
-
-</details>
-
-
-<details><summary>Inference</summary>
+<details><summary>Run Commands</summary>
 
 ```bash
 $ cd BoT-SORT/

@@ -1,6 +1,6 @@
 ## SOT (Single Object Tracking)
 
-This section provides datasets related to the SOT task (Track 1 and Track 2 of the [4th Anti-UAV Workshop](https://anti-uav.github.io/)), including the processed `Strong Baseline` [datasets](https://zenodo.org/records/15203123) presented in Table 2 of the [paper](https://arxiv.org/pdf/2503.17237) and the `Officially Released` datasets from [Track 1](https://codalab.lisn.upsaclay.fr/competitions/21688#participate-get_data) and [Track 2](https://codalab.lisn.upsaclay.fr/competitions/21690#participate), available via the links below.
+This section provides datasets related to the SOT task (Track 1 and Track 2 of the [4th Anti-UAV Workshop](https://anti-uav.github.io/)), including the processed `Strong Baseline` [datasets](https://doi.org/10.5281/zenodo.15203123) presented in Table 2 of the [paper](https://arxiv.org/pdf/2503.17237) and the `Officially Released` datasets from [Track 1](https://codalab.lisn.upsaclay.fr/competitions/21688#participate-get_data) and [Track 2](https://codalab.lisn.upsaclay.fr/competitions/21690#participate), available via the links below.
 
 
 ### (1) Strong Baseline: Multi-UAV Tracking via YOLOv12 with BoT-SORT-ReID
