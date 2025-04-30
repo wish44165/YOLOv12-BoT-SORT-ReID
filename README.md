@@ -83,11 +83,10 @@ $ git clone https://github.com/wish44165/YOLOv12-BoT-SORT-ReID.git
 $ cd YOLOv12-BoT-SORT-ReID/BoT-SORT/yolov12/
 $ wget https://github.com/Dao-AILab/flash-attention/releases/download/v2.7.3/flash_attn-2.7.3+cu11torch2.2cxx11abiFALSE-cp311-cp311-linux_x86_64.whl
 $ pip install -r requirements.txt
-$ pip install -e .
 $ cd ../
 $ pip3 install torch torchvision torchaudio
 $ pip3 install -r requirements.txt
-$ python3 setup.py develop
+$ pip3 install ultralytics
 $ pip3 install cython; pip3 install 'git+https://github.com/cocodataset/cocoapi.git#subdirectory=PythonAPI'
 $ pip3 install cython_bbox
 $ pip3 install faiss-cpu
