@@ -97,11 +97,14 @@ $ pip3 install faiss-cpu
 
 <details><summary>Folder Structure</summary>
 
+The following folder structure will be created upon cloning this repository.
+
 ```
 YOLOv12-BoT-SORT-ReID/
 ├── data/
 │   └── demo/
 │       ├── MOT/
+│       │   ├── MultiUAV-003.mp4
 │       │   ├── Test_imgs/
 │       │   │   ├── MultiUAV-003/
 │       │   │   ├── MultiUAV-135/
@@ -131,6 +134,8 @@ YOLOv12-BoT-SORT-ReID/
 
 <details><summary>Demonstration</summary>
 
+Toy example with three tracks, including SOT and MOT.
+
 ```bash
 $ cd BoT-SORT/
 
@@ -155,6 +160,94 @@ $ python heatmap.py
 </details>
 
 
+<details><summary>Run Inference on Custom Data</summary>
+
+This project supports flexible inference on image folders and video files, with or without initial object positions, specifically for MOT task.
+
+```bash
+python3 tools/inference.py \
+    --weights ./yolov12/weights/MOT_yolov12n.pt \
+    --source ../data/demo/MOT/MultiUAV-003.mp4 \
+    --with-initial-positions \
+    --initial-position-config ../data/demo/MOT/TestLabels_FirstFrameOnly/MultiUAV-003.txt \
+    --img-size 1600 \
+    --track_buffer 60 \
+    --device "0" \
+    --agnostic-nms \
+    --save_path_answer ./submit/inference/ \
+    --with-reid \
+    --fast-reid-config logs/sbs_S50/config.yaml \
+    --fast-reid-weights logs/sbs_S50/model_0016.pth \
+    --hide-labels-name
+```
+
+Below are examples of supported inference settings:
+
+```bash
+# 1. Inference on Image Folder (without initial position)
+python3 tools/inference.py \
+    --weights ./yolov12/weights/MOT_yolov12n.pt \
+    --source ../data/demo/MOT/Test_imgs/MultiUAV-003/\
+    --img-size 1600 \
+    --track_buffer 60 \
+    --device "0" \
+    --agnostic-nms \
+    --save_path_answer ./submit/inference/ \
+    --with-reid \
+    --fast-reid-config logs/sbs_S50/config.yaml \
+    --fast-reid-weights logs/sbs_S50/model_0016.pth \
+    --hide-labels-name
+
+# 2. Inference on Image Folder (with initial position)
+python3 tools/inference.py \
+    --weights ./yolov12/weights/MOT_yolov12n.pt \
+    --source ../data/demo/MOT/Test_imgs/MultiUAV-003/ \
+    --with-initial-positions \
+    --initial-position-config ../data/demo/MOT/TestLabels_FirstFrameOnly/MultiUAV-003.txt \
+    --img-size 1600 \
+    --track_buffer 60 \
+    --device "0" \
+    --agnostic-nms \
+    --save_path_answer ./submit/inference/ \
+    --with-reid \
+    --fast-reid-config logs/sbs_S50/config.yaml \
+    --fast-reid-weights logs/sbs_S50/model_0016.pth \
+    --hide-labels-name
+
+# 3. Inference on Video (without initial position)
+python3 tools/inference.py \
+    --weights ./yolov12/weights/MOT_yolov12n.pt \
+    --source ../data/demo/MOT/MultiUAV-003.mp4 \
+    --img-size 1600 \
+    --track_buffer 60 \
+    --device "0" \
+    --agnostic-nms \
+    --save_path_answer ./submit/inference/ \
+    --with-reid \
+    --fast-reid-config logs/sbs_S50/config.yaml \
+    --fast-reid-weights logs/sbs_S50/model_0016.pth \
+    --hide-labels-name
+
+# 4. Inference on Video (with initial position)
+python3 tools/inference.py \
+    --weights ./yolov12/weights/MOT_yolov12n.pt \
+    --source ../data/demo/MOT/MultiUAV-003.mp4 \
+    --with-initial-positions \
+    --initial-position-config ../data/demo/MOT/TestLabels_FirstFrameOnly/MultiUAV-003.txt \
+    --img-size 1600 \
+    --track_buffer 60 \
+    --device "0" \
+    --agnostic-nms \
+    --save_path_answer ./submit/inference/ \
+    --with-reid \
+    --fast-reid-config logs/sbs_S50/config.yaml \
+    --fast-reid-weights logs/sbs_S50/model_0016.pth \
+    --hide-labels-name
+```
+
+</details>
+
+
 
 
 
@@ -165,6 +258,8 @@ $ python heatmap.py
 
 
 <details><summary>Hardware Information</summary>
+
+Experiments were conducted on two platforms: (1) a local system with an Intel Core i7-12650H CPU, NVIDIA RTX 4050 GPU, and 16 GB RAM for data processing and inference, and (2) an HPC system with an NVIDIA H100 GPU and 80 GB memory for model training.
 
 ### Laptop
 
@@ -316,6 +411,8 @@ YOLOv12-BoT-SORT-ReID/
 ### 🔨 Reproduction
 
 <details><summary>Run Commands</summary>
+
+Executing the following commands can reproduce the leaderboard results.
 
 ```bash
 $ cd BoT-SORT/
