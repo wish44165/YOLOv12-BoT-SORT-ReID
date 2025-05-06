@@ -167,9 +167,9 @@ This project supports flexible inference on image folders and video files, with 
 ```bash
 python3 tools/inference.py \
     --weights ./yolov12/weights/MOT_yolov12n.pt \
-    --source ../data/demo/MOT/MultiUAV-003.mp4 \
+    --source <path to folder or video> \
     --with-initial-positions \
-    --initial-position-config ../data/demo/MOT/TestLabels_FirstFrameOnly/MultiUAV-003.txt \
+    --initial-position-config <path to initial positions file (optional)> \
     --img-size 1600 \
     --track_buffer 60 \
     --device "0" \
@@ -193,9 +193,6 @@ python3 tools/inference.py \
     --device "0" \
     --agnostic-nms \
     --save_path_answer ./submit/inference/ \
-    --with-reid \
-    --fast-reid-config logs/sbs_S50/config.yaml \
-    --fast-reid-weights logs/sbs_S50/model_0016.pth \
     --hide-labels-name
 
 # 2. Inference on Image Folder (with initial position)
@@ -209,9 +206,6 @@ python3 tools/inference.py \
     --device "0" \
     --agnostic-nms \
     --save_path_answer ./submit/inference/ \
-    --with-reid \
-    --fast-reid-config logs/sbs_S50/config.yaml \
-    --fast-reid-weights logs/sbs_S50/model_0016.pth \
     --hide-labels-name
 
 # 3. Inference on Video (without initial position)
@@ -223,9 +217,6 @@ python3 tools/inference.py \
     --device "0" \
     --agnostic-nms \
     --save_path_answer ./submit/inference/ \
-    --with-reid \
-    --fast-reid-config logs/sbs_S50/config.yaml \
-    --fast-reid-weights logs/sbs_S50/model_0016.pth \
     --hide-labels-name
 
 # 4. Inference on Video (with initial position)
@@ -239,9 +230,6 @@ python3 tools/inference.py \
     --device "0" \
     --agnostic-nms \
     --save_path_answer ./submit/inference/ \
-    --with-reid \
-    --fast-reid-config logs/sbs_S50/config.yaml \
-    --fast-reid-weights logs/sbs_S50/model_0016.pth \
     --hide-labels-name
 ```
 
