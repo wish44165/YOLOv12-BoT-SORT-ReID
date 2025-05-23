@@ -26,6 +26,28 @@ from yolov12.utils.torch_utils import select_device, load_classifier, time_synch
 from tracker.mc_bot_sort import BoTSORT
 from tracker.tracking_utils.timer import Timer
 
+
+from huggingface_hub import hf_hub_download
+import shutil
+
+# Define your target directory
+target_dir = "logs/sbs_S50"
+os.makedirs(target_dir, exist_ok=True)  # Make sure the directory exists
+
+# List of files to download
+files_to_download = ["model_0016.pth", "config.yaml"]
+
+# Download each file and move it to the target directory
+for filename in files_to_download:
+    downloaded_path = hf_hub_download(
+        repo_id="wish44165/YOLOv12-BoT-SORT-ReID",
+        filename=filename
+    )
+    shutil.copy(downloaded_path, os.path.join(target_dir, filename))
+
+print(f"Downloaded files are saved to: {target_dir}")
+
+
 def write_results(filename, results):
     save_format = '{frame},{id},{x1},{y1},{w},{h},{s},-1,-1,-1\n'
     with open(filename, 'w') as f:

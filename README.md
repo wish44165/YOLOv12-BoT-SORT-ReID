@@ -90,6 +90,7 @@ $ pip3 install ultralytics
 $ pip3 install cython; pip3 install 'git+https://github.com/cocodataset/cocoapi.git#subdirectory=PythonAPI'
 $ pip3 install cython_bbox
 $ pip3 install faiss-cpu
+$ pip3 install seaborn
 ```
 
 </details>
@@ -149,6 +150,7 @@ $ python3 tools/predict_track2.py --weights ./yolov12/weights/SOT_yolov12l.pt --
 
 # Track 3
 $ python3 tools/predict_track3.py --weights ./yolov12/weights/MOT_yolov12n.pt --source ../data/demo/MOT/ --img-size 1600 --device "0" --track_buffer 60 --save_path_answer ./submit/track3/demo --hide-labels-name
+$ python3 tools/predict_track3.py --weights ./yolov12/weights/MOT_yolov12n.pt --source ../data/demo/MOT/ --img-size 1600 --device "0" --track_buffer 60 --save_path_answer ./submit/track3/demo --with-reid --fast-reid-config logs/sbs_S50/config.yaml --fast-reid-weights logs/sbs_S50/model_0016.pth --hide-labels-name
 # output: ./runs/detect/, ./submit/track3/demo/
 
 # Heatmap
@@ -187,12 +189,15 @@ Below are examples of supported inference settings:
 # 1. Inference on Image Folder (without initial position)
 python3 tools/inference.py \
     --weights ./yolov12/weights/MOT_yolov12n.pt \
-    --source ../data/demo/MOT/Test_imgs/MultiUAV-003/\
+    --source ../data/demo/MOT/Test_imgs/MultiUAV-003/ \
     --img-size 1600 \
     --track_buffer 60 \
     --device "0" \
     --agnostic-nms \
     --save_path_answer ./submit/inference/ \
+    --with-reid \
+    --fast-reid-config logs/sbs_S50/config.yaml \
+    --fast-reid-weights logs/sbs_S50/model_0016.pth \
     --hide-labels-name
 
 # 2. Inference on Image Folder (with initial position)
@@ -206,6 +211,9 @@ python3 tools/inference.py \
     --device "0" \
     --agnostic-nms \
     --save_path_answer ./submit/inference/ \
+    --with-reid \
+    --fast-reid-config logs/sbs_S50/config.yaml \
+    --fast-reid-weights logs/sbs_S50/model_0016.pth \
     --hide-labels-name
 
 # 3. Inference on Video (without initial position)
@@ -217,6 +225,9 @@ python3 tools/inference.py \
     --device "0" \
     --agnostic-nms \
     --save_path_answer ./submit/inference/ \
+    --with-reid \
+    --fast-reid-config logs/sbs_S50/config.yaml \
+    --fast-reid-weights logs/sbs_S50/model_0016.pth \
     --hide-labels-name
 
 # 4. Inference on Video (with initial position)
@@ -230,6 +241,9 @@ python3 tools/inference.py \
     --device "0" \
     --agnostic-nms \
     --save_path_answer ./submit/inference/ \
+    --with-reid \
+    --fast-reid-config logs/sbs_S50/config.yaml \
+    --fast-reid-weights logs/sbs_S50/model_0016.pth \
     --hide-labels-name
 ```
 
