@@ -54,6 +54,7 @@ This repository provides a strong baseline for multi-UAV tracking in thermal inf
 
 ## 🗞️ News
 
+- **June 6, 2025**: Corrected mistyped numbers in [Table 1](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID/tree/main/assets/Table_1.png) .
 - **April 25, 2025**: Single-Frame Enhancement [datasets](https://doi.org/10.5281/zenodo.15276582) are now available.
 - **April 23, 2025**: Strong Baseline weights available: [YOLOv12](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID/tree/main/BoT-SORT/yolov12/weights) | [ReID](https://huggingface.co/wish44165/YOLOv12-BoT-SORT-ReID/tree/main) .
 - **April 13, 2025**: The [datasets](https://doi.org/10.5281/zenodo.15203123) presented in Table 2 of the [paper](https://arxiv.org/pdf/2503.17237) are now available.
@@ -364,6 +365,7 @@ Follow the folder structure below to ensure smooth execution and easy navigation
 ```
 YOLOv12-BoT-SORT-ReID/
 ├── BoT-SORT/
+│   ├── getInfo.py
 │   ├── datasets/
 │   │   └── README.md
 │   ├── fast_reid/
@@ -418,6 +420,9 @@ Executing the following commands can reproduce the leaderboard results.
 
 ```bash
 $ cd BoT-SORT/
+
+# Table 1
+$ python3 getInfo.py
 
 # Track 1
 $ python3 tools/predict_track1.py --weights ./yolov12/weights/SOT_yolov12l.pt --source ../data/SOT/track1_test/ --img-size 640 --device "0" --conf-thres 0.01 --iou-thres 0.01 --track_high_thresh 0.1 --track_low_thresh 0.01 --fuse-score --agnostic-nms --min_box_area 4 --save_path_answer ./submit/track1/test --hide-labels-name
