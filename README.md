@@ -1,4 +1,11 @@
-## Strong Baseline: Multi-UAV Tracking via YOLOv12 with BoT-SORT-ReID
+## YOLOv12-BoT-SORT-ReID
+
+
+
+
+> [Strong Baseline: Multi-UAV Tracking via YOLOv12 with BoT-SORT-ReID](https://openaccess.thecvf.com/content/CVPR2025W/Anti-UAV/html/Chen_Strong_Baseline_Multi-UAV_Tracking_via_YOLOv12_with_BoT-SORT-ReID_CVPRW_2025_paper.html)
+>
+> Yu-Hsi Chen
 
 
 
@@ -20,7 +27,25 @@
 
 
 
-This repository provides a strong baseline for multi-UAV tracking in thermal infrared videos by leveraging YOLOv12 and BoT-SORT with ReID. Our method provides a significant boost over the well-established YOLOv5 with the DeepSORT combination, offering a high-performance starting point for UAV swarm tracking.
+<details><summary>Preface</summary>
+
+The combination of YOLOv12 and BoT-SORT demonstrates strong object detection and tracking potential yet remains underexplored in current literature and implementations.
+
+<img src="https://github.com/wish44165/YOLOv12-BoT-SORT-ReID/blob/main/assets/existing_methods_overview.png" width="100%">
+
+```
+[1] Jocher, Glenn, et al. "ultralytics/yolov5: v6. 0-YOLOv5n'Nano'models, Roboflow integration, TensorFlow export, OpenCV DNN support." Zenodo (2021).
+[2] Tian, Yunjie, Qixiang Ye, and David Doermann. "Yolov12: Attention-centric real-time object detectors." arXiv preprint arXiv:2502.12524 (2025).
+[3] Zhang, Guangdong, et al. "Multi-object Tracking Based on YOLOX and DeepSORT Algorithm." International Conference on 5G for Future Wireless Networks. Cham: Springer Nature Switzerland, 2022.
+[4] Aharon, Nir, Roy Orfaig, and Ben-Zion Bobrovsky. "Bot-sort: Robust associations multi-pedestrian tracking." arXiv preprint arXiv:2206.14651 (2022).
+```
+
+</details>
+
+
+
+
+This repository provides a strong baseline for multi-UAV tracking in thermal infrared videos by leveraging YOLOv12 with BoT-SORT enhanced by ReID. Our approach significantly outperforms the widely adopted YOLOv5 + DeepSORT pipeline, offering a high-performance foundation for UAV swarm tracking. Importantly, the established workflow in this repository can be easily integrated with any custom-trained model, extending its applicability beyond UAV scenarios. Refer to [this](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID#-quickstart-installation-and-demonstration) section for practical usage examples.
 
 
 
@@ -418,11 +443,29 @@ YOLOv12-BoT-SORT-ReID/
 
 Executing the following commands can reproduce the leaderboard results.
 
+<details><summary>Data Analysis</summary>
+
 ```bash
 $ cd BoT-SORT/
 
 # Table 1
 $ python3 getInfo.py
+```
+
+</details>
+
+<details><summary>Train</summary>
+
+```bash
+# Details soon
+```
+
+</details>
+
+<details><summary>Inference</summary>
+
+```bash
+$ cd BoT-SORT/
 
 # Track 1
 $ python3 tools/predict_track1.py --weights ./yolov12/weights/SOT_yolov12l.pt --source ../data/SOT/track1_test/ --img-size 640 --device "0" --conf-thres 0.01 --iou-thres 0.01 --track_high_thresh 0.1 --track_low_thresh 0.01 --fuse-score --agnostic-nms --min_box_area 4 --save_path_answer ./submit/track1/test --hide-labels-name
@@ -437,6 +480,8 @@ $ chmod +x run_track3.sh
 $ ./run_track3.sh
 # output: ./runs/detect/, ./submit/track3/test/
 ```
+
+</details>
 
 </details>
 
@@ -468,11 +513,13 @@ $ ./run_track3.sh
 If you find this project helpful for your research or applications, we would appreciate it if you could give it a star and cite the paper.
 
 ```
-@article{chen2025strong,
-  title={Strong Baseline: Multi-UAV Tracking via YOLOv12 with BoT-SORT-ReID},
-  author={Chen, Yu-Hsi},
-  journal={arXiv preprint arXiv:2503.17237},
-  year={2025}
+@InProceedings{Chen_2025_CVPR,
+    author    = {Chen, Yu-Hsi},
+    title     = {Strong Baseline: Multi-UAV Tracking via YOLOv12 with BoT-SORT-ReID},
+    booktitle = {Proceedings of the Computer Vision and Pattern Recognition Conference (CVPR) Workshops},
+    month     = {June},
+    year      = {2025},
+    pages     = {6573-6582}
 }
 ```
 

@@ -1,0 +1,9 @@
+# Train/val sets 
+train: ../../data/MOT/datasets/train    # train images
+val: ../../data/MOT/datasets/val    # val images
+
+# Number of classes
+nc: 1
+
+# Classes
+names: ['uav']
