@@ -45,7 +45,7 @@ The combination of YOLOv12 and BoT-SORT demonstrates strong object detection and
 
 
 
-This repository provides a strong baseline for multi-UAV tracking in thermal infrared videos by leveraging YOLOv12 with BoT-SORT enhanced by ReID. Our approach significantly outperforms the widely adopted YOLOv5 + DeepSORT pipeline, offering a high-performance foundation for UAV swarm tracking. Importantly, the established workflow in this repository can be easily integrated with any custom-trained model, extending its applicability beyond UAV scenarios. Refer to [this](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID#-quickstart-installation-and-demonstration) section for practical usage examples.
+This repository provides a strong baseline for multi-UAV tracking in thermal infrared videos by leveraging YOLOv12 and BoT-SORT with ReID. Our approach significantly outperforms the widely adopted YOLOv5 with the DeepSORT pipeline, offering a high-performance foundation for UAV swarm tracking. Importantly, the established workflow in this repository can be easily integrated with any custom-trained model, extending its applicability beyond UAV scenarios. Refer to [this](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID#-quickstart-installation-and-demonstration) section for practical usage examples.
 
 
 
@@ -454,7 +454,16 @@ $ python3 getInfo.py
 
 </details>
 
-<details><summary>Train</summary>
+<details><summary>Train YOLOv12</summary>
+
+```bash
+$ cd BoT-SORT/yolov12/
+$ python3 train.py
+```
+
+</details>
+
+<details><summary>Train BoT-SORT-ReID</summary>
 
 ```bash
 # Details soon
