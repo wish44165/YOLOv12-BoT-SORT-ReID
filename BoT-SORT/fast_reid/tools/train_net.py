@@ -15,25 +15,30 @@ from fast_reid.fastreid.engine import DefaultTrainer, default_argument_parser, d
 from fast_reid.fastreid.utils.checkpoint import Checkpointer
 
 
-from huggingface_hub import hf_hub_download
 import shutil
+from huggingface_hub import hf_hub_download
 
 # Define your target directory
 target_dir = "./logs/sbs_S50"
-os.makedirs(target_dir, exist_ok=True)  # Make sure the directory exists
+os.makedirs(target_dir, exist_ok=True)  # Ensure directory exists
 
 # List of files to download
 files_to_download = ["model_0016.pth", "config.yaml"]
 
-# Download each file and move it to the target directory
+# Download each file only if it doesn't already exist
 for filename in files_to_download:
-    downloaded_path = hf_hub_download(
-        repo_id="wish44165/YOLOv12-BoT-SORT-ReID",
-        filename=filename
-    )
-    shutil.copy(downloaded_path, os.path.join(target_dir, filename))
+    target_path = os.path.join(target_dir, filename)
+    if not os.path.exists(target_path):
+        print(f"Downloading {filename}...")
+        downloaded_path = hf_hub_download(
+            repo_id="wish44165/YOLOv12-BoT-SORT-ReID",
+            filename=filename
+        )
+        shutil.copy(downloaded_path, target_path)
+    else:
+        print(f"{filename} already exists, skipping download.")
 
-print(f"Downloaded files are saved to: {target_dir}")
+print(f"Checked and ensured all files in: {target_dir}")
 
 
 def setup(args):

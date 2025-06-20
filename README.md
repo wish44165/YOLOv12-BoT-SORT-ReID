@@ -79,6 +79,7 @@ This repository provides a strong baseline for multi-UAV tracking in thermal inf
 
 ## 🗞️ News
 
+- **June 21, 2025**: Training scripts for [YOLOv12 and BoT-SORT-ReID](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID#-reproduction) are now available.
 - **June 6, 2025**: Corrected mistyped numbers in [Table 1](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID/tree/main/assets/Table_1.png) .
 - **April 25, 2025**: Single-Frame Enhancement [datasets](https://doi.org/10.5281/zenodo.15276582) are now available.
 - **April 23, 2025**: Strong Baseline weights available: [YOLOv12](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID/tree/main/BoT-SORT/yolov12/weights) | [ReID](https://huggingface.co/wish44165/YOLOv12-BoT-SORT-ReID/tree/main) .
@@ -459,7 +460,7 @@ $ python3 getInfo.py
 ```bash
 $ cd BoT-SORT/yolov12/
 
-# default settings
+# Run training with default settings
 $ python3 train.py
 ```
 
@@ -470,7 +471,7 @@ $ python3 train.py
 ```bash
 $ cd BoT-SORT/
 
-# default settings
+# Train with final config
 $ python3 fast_reid/tools/train_net.py --config-file ./logs/sbs_S50/config.yaml MODEL.DEVICE "cuda:0"
 ```
 
