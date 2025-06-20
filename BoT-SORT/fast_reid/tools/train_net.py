@@ -5,6 +5,7 @@
 @contact: sherlockliao01@gmail.com
 """
 
+import os
 import sys
 
 sys.path.append('.')
@@ -12,6 +13,27 @@ sys.path.append('.')
 from fast_reid.fastreid.config import get_cfg
 from fast_reid.fastreid.engine import DefaultTrainer, default_argument_parser, default_setup, launch
 from fast_reid.fastreid.utils.checkpoint import Checkpointer
+
+
+from huggingface_hub import hf_hub_download
+import shutil
+
+# Define your target directory
+target_dir = "./logs/sbs_S50"
+os.makedirs(target_dir, exist_ok=True)  # Make sure the directory exists
+
+# List of files to download
+files_to_download = ["model_0016.pth", "config.yaml"]
+
+# Download each file and move it to the target directory
+for filename in files_to_download:
+    downloaded_path = hf_hub_download(
+        repo_id="wish44165/YOLOv12-BoT-SORT-ReID",
+        filename=filename
+    )
+    shutil.copy(downloaded_path, os.path.join(target_dir, filename))
+
+print(f"Downloaded files are saved to: {target_dir}")
 
 
 def setup(args):

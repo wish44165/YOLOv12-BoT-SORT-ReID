@@ -458,6 +458,8 @@ $ python3 getInfo.py
 
 ```bash
 $ cd BoT-SORT/yolov12/
+
+# default settings
 $ python3 train.py
 ```
 
@@ -466,7 +468,10 @@ $ python3 train.py
 <details><summary>Train BoT-SORT-ReID</summary>
 
 ```bash
-# Details soon
+$ cd BoT-SORT/
+
+# default settings
+$ python3 fast_reid/tools/train_net.py --config-file ./logs/sbs_S50/config.yaml MODEL.DEVICE "cuda:0"
 ```
 
 </details>
