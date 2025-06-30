@@ -50,7 +50,7 @@ This repository provides a strong baseline for multi-UAV tracking in thermal inf
 
 
 
-📹 Preview - Strong Baseline
+<details><summary>📹 Preview - Strong Baseline</summary>
 
 [strong_baseline.webm](https://github.com/user-attachments/assets/702b3e80-fd3c-48f0-8032-a2a97563c19f)
 
@@ -60,26 +60,64 @@ This repository provides a strong baseline for multi-UAV tracking in thermal inf
 
 🌐 [CVPR2025](https://cvpr.thecvf.com/) | [Workshops](https://cvpr.thecvf.com/Conferences/2025/workshop-list) | [4th Anti-UAV Workshop](https://anti-uav.github.io/) | [Track-1](https://codalab.lisn.upsaclay.fr/competitions/21688) | [Track-2](https://codalab.lisn.upsaclay.fr/competitions/21690) | [Track-3](https://codalab.lisn.upsaclay.fr/competitions/21806)
 
-
-
-
----
+</details>
 
 
 
 
-📹 Preview - Single-Frame Enhancements
+<details><summary>📹 Preview - Single-Frame Enhancements</summary>
 
 [enhancements_MultiUAV-261.webm](https://github.com/user-attachments/assets/f1dd3877-d898-45c2-93c9-26f677020e07)
 
 🔗 Full video available at: [Enhancements](https://youtu.be/lkIlYCjz8r4?si=7jpgs5OAEeABNVGo)
+
+</details>
+
+
+
+
+<details><summary>📹 Preview - Vision in Action</summary>
+
+A showcase of scenario categories designed to evaluate tracking performance under diverse conditions:
+- **Takeoff** - UAV launch phase
+- **L** - Larger UAV target
+- **C** - Cloud background
+- **CF** - Cloud (Fewer UAVs)
+- **T** - Tree background
+- **TF** - Tree (Fewer UAVs)
+- **B** - Scene with buildings
+- **BB1** - Building Background 1
+- **BB2** - Building Background 2
+- **BB2P** - Building Background 2 (UAV partially out of view)
+- **Landing** - UAV landing phase
+
+</details>
+
+[vision_in_action.webm](https://github.com/user-attachments/assets/271ea716-e773-410d-8a8b-8a7f75a7ccb3)
+
+
+
+
+
+
+
+
+## 🏁 Upcoming
+
+Stay tuned for future releases and demos.
+
+- **Vision in Action**: Tracking Evaluation Platform
+
+
+
+
 
 
 
 
 ## 🗞️ News
 
-- **June 21, 2025**: Training scripts for [YOLOv12 and BoT-SORT-ReID](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID#-reproduction) are now available.
+- **June 21, 2025**: Training scripts for [YOLOv12](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID#-reproduction) and [BoT-SORT-ReID](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID#-reproduction) are now available.
 - **June 6, 2025**: Corrected mistyped numbers in [Table 1](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID/tree/main/assets/Table_1.png) .
 - **April 25, 2025**: Single-Frame Enhancement [datasets](https://doi.org/10.5281/zenodo.15276582) are now available.
 - **April 23, 2025**: Strong Baseline weights available: [YOLOv12](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID/tree/main/BoT-SORT/yolov12/weights) | [ReID](https://huggingface.co/wish44165/YOLOv12-BoT-SORT-ReID/tree/main) .
