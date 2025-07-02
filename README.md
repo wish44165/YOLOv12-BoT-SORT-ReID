@@ -76,9 +76,16 @@ This repository provides a strong baseline for multi-UAV tracking in thermal inf
 
 
 
-<details><summary>📹 Preview - Vision in Action</summary>
+<details open><summary>📹 Preview - Vision in Action</summary>
 
-A showcase of scenario categories designed to evaluate tracking performance under diverse conditions:
+A complete visual overview of all training and test scenarios featured in the upcoming evaluation platform.
+
+[vision_in_action.webm](https://github.com/user-attachments/assets/f50d8e90-63b8-4b62-84ca-7e71c0750c67)
+
+🔗 Full video available at: [Overview](https://youtu.be/0-Sn_mxRPJw?si=xfFXvBNoQz8zxnbK)
+
+Scenarios are categorized to evaluate tracking performance under diverse conditions:
+
 - **Takeoff** - UAV launch phase
 - **L** - Larger UAV target
 - **C** - Cloud background
@@ -93,7 +100,40 @@ A showcase of scenario categories designed to evaluate tracking performance unde
 
 </details>
 
-[vision_in_action.webm](https://github.com/user-attachments/assets/271ea716-e773-410d-8a8b-8a7f75a7ccb3)
+
+
+
+<details><summary>📹 Preview - Vision in Action: Training Videos</summary>
+
+Details soon.
+
+</details>
+
+
+
+
+<details><summary>📹 Preview - Vision in Action: Testing Videos</summary>
+
+Details soon.
+
+</details>
+
+
+
+
+<details><summary>📹 Preview - Custom Model Inference</summary>
+
+This section showcases example videos processed using a custom-trained model. The scenes are not limited to UAV footage or single-class detection. See [🚀 Quickstart: Installation and Demonstration](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID?tab=readme-ov-file#-quickstart-installation-and-demonstration) → `Run Inference Using a Custom-Trained Model` for more details.
+
+<details><summary>1. Multi-Class on a Walkway Scene</summary>
+
+[palace.webm](https://github.com/user-attachments/assets/0c14680d-b206-4924-a81f-8210ca109377)
+
+🔗 Original video: [palace.mp4](https://github.com/FoundationVision/ByteTrack/blob/main/videos/palace.mp4)
+
+</details>
+
+</details>
 
 
 
@@ -118,6 +158,7 @@ Stay tuned for future releases and demos.
 ## 🗞️ News
 
 - **June 21, 2025**: Training scripts for [YOLOv12](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID#-reproduction) and [BoT-SORT-ReID](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID#-reproduction) are now available.
+- **June 12, 2025**: 🥉 **3rd Place Award in The 4th Anti-UAV Workshop & Challenge Track 3**.
 - **June 6, 2025**: Corrected mistyped numbers in [Table 1](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID/tree/main/assets/Table_1.png) .
 - **April 25, 2025**: Single-Frame Enhancement [datasets](https://doi.org/10.5281/zenodo.15276582) are now available.
 - **April 23, 2025**: Strong Baseline weights available: [YOLOv12](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID/tree/main/BoT-SORT/yolov12/weights) | [ReID](https://huggingface.co/wish44165/YOLOv12-BoT-SORT-ReID/tree/main) .
@@ -310,6 +351,27 @@ python3 tools/inference.py \
     --fast-reid-config logs/sbs_S50/config.yaml \
     --fast-reid-weights logs/sbs_S50/model_0016.pth \
     --hide-labels-name
+```
+
+</details>
+
+
+<details><summary>Run Inference Using a Custom Trained Model</summary>
+
+This project also supports flexible inference using a custom-trained model for any MOT task. Below are the instructions for reproducing the preview section.
+
+```bash
+$ cd BoT-SORT/
+
+# 1. Multi-Class on a Walkway Scene
+$ wget https://github.com/sunsmarterjie/yolov12/releases/download/v1.0/yolov12x.pt
+$ wget https://github.com/FoundationVision/ByteTrack/raw/main/videos/palace.mp4
+$ python3 tools/inference.py \
+    --weights yolov12x.pt \
+    --source palace.mp4 \
+    --img-size 640 \
+    --device "0" \
+    --save_path_answer ./submit/palace/
 ```
 
 </details>
