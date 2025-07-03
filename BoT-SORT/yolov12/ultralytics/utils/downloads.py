@@ -431,7 +431,7 @@ def attempt_download_asset(file, repo="ultralytics/assets", release="v8.3.0", **
 
     if 'v12' in str(file):
         repo = "sunsmarterjie/yolov12"
-        release = "v1.0"
+        release = "turbo"
 
     # YOLOv3/5u updates
     file = str(file)

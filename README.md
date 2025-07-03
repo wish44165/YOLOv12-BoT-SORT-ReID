@@ -611,10 +611,10 @@ $ ./run_track3.sh
 
 [![Hugging Face Models](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Models-blue)](https://huggingface.co/wish44165/YOLOv12-BoT-SORT-ReID) 
 
-| Model                                                                                | size<br><sup>(pixels) | mAP<sup>val<br>50-95 | params<br><sup>(M) | FLOPs<br><sup>(G) |
-| :----------------------------------------------------------------------------------- | :-------------------: | :-------------------:| :-----------------:| :---------------:|
+| Model                                                                                | size<br><sup>(pixels) | mAP<sup>val<br>50-95 | params<br><sup>(M) | FLOPs<br><sup>(G) | Note |
+| :----------------------------------------------------------------------------------- | :-------------------: | :-------------------:| :-----------------:| :---------------:| :----: |
 | [SOT_yolov12l.pt](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID/blob/main/BoT-SORT/yolov12/weights/SOT_yolov12l.pt) | 640                   | 67.2                 | 26.3                | 88.5               |
-| [MOT_yolov12n.pt](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID/blob/main/BoT-SORT/yolov12/weights/MOT_yolov12n.pt) ([ReID](https://huggingface.co/wish44165/YOLOv12-BoT-SORT-ReID/tree/main/sbs_S50)) | 1600                   | 77.7                 | 2.6                | 6.3              |
+| [MOT_yolov12n.pt](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID/blob/main/BoT-SORT/yolov12/weights/MOT_yolov12n.pt) ([ReID](https://huggingface.co/wish44165/YOLOv12-BoT-SORT-ReID/tree/main)) | 1600                   | 68.5                 | 2.6                | 6.3              | [#4 (Comment)](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID/issues/4#issuecomment-2959336418) |
 
 
 
