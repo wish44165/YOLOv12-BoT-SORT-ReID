@@ -1,21 +1,52 @@
-import argparse
-import time
-from pathlib import Path
-import sys
-from ultralytics import YOLO
 import os
 import cv2
+import sys
 import copy
+import time
 import json
+import argparse
+import traceback
 import torch
 import torch.backends.cudnn as cudnn
-from numpy import random
 from tqdm import tqdm
-
+from numpy import random
+from pathlib import Path
 
 random.seed(44165)
 
 sys.path.append('.')
+
+
+def try_detect_with_fallback():
+    try:
+        print("🧪 Trying with site-packages ultralytics...")
+        import ultralytics
+        print("✅ Using site-packages:", ultralytics.__file__)
+        detect()
+    except Exception as e:
+        print("❌ Site-packages version failed with error:")
+        traceback.print_exc()
+
+        print("\n🔁 Retrying with local ultralytics...")
+
+        # Inject local ultralytics path
+        local_ultra_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../yolov12'))
+        if local_ultra_path not in sys.path:
+            sys.path.insert(0, local_ultra_path)
+
+        # Clean all ultralytics-related imports
+        for mod in list(sys.modules):
+            if mod.startswith("ultralytics"):
+                del sys.modules[mod]
+
+        # Now import local ultralytics
+        import ultralytics
+        print("✅ Now using local ultralytics from:", ultralytics.__file__)
+
+        detect()
+
+
+from ultralytics import YOLO
 
 from yolov12.models.experimental import attempt_load
 from yolov12.utils.datasets import LoadStreams, LoadImages
@@ -440,4 +471,4 @@ if __name__ == '__main__':
         if opt.update:  # update all models (to fix SourceChangeWarning)
             for opt.weights in Path(opt.weights).expanduser().glob('*.pt'):
                 strip_optimizer(opt.weights)
-        detect()
+        try_detect_with_fallback()
