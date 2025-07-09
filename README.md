@@ -127,9 +127,19 @@ This section showcases example videos processed using a custom-trained model. Th
 
 <details><summary>1. Multi-Class on a Walkway Scene</summary>
 
-[palace.webm](https://github.com/user-attachments/assets/0c14680d-b206-4924-a81f-8210ca109377)
+[palace.webm](https://github.com/user-attachments/assets/cc32bda1-f461-4813-9639-eab2adfc178e)
 
 🔗 Original video: [palace.mp4](https://github.com/FoundationVision/ByteTrack/blob/main/videos/palace.mp4)
+
+</details>
+
+<details open><summary>2. Common Objects Underwater</summary>
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15828323.svg)](https://doi.org/10.5281/zenodo.15828323)
+
+[cou.webm](https://github.com/user-attachments/assets/59a81337-245a-49a7-817e-422536199b19)
+
+🔗 Full video available at: [COU.mp4](https://youtu.be/dZAQnpDq7NQ?si=ovF637bp4D-HZ04_)
 
 </details>
 
@@ -372,6 +382,16 @@ $ python3 tools/inference.py \
     --img-size 640 \
     --device "0" \
     --save_path_answer ./submit/palace/
+
+# 2. Common Objects Underwater
+for f in ./videos/COU/*.mp4; do
+    python3 tools/inference.py \
+        --weights ./yolov12/runs/det/train/weights/best.pt \
+        --source "$f" \
+        --img-size 1600 \
+        --device "0" \
+        --save_path_answer ./submit/COU/
+done
 ```
 
 </details>
@@ -557,6 +577,8 @@ $ python3 getInfo.py
 
 <details><summary>Train YOLOv12</summary>
 
+Refer to the [README](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID/tree/main/data/MOT#readme) for more information.
+
 ```bash
 $ cd BoT-SORT/yolov12/
 
@@ -567,6 +589,8 @@ $ python3 train.py
 </details>
 
 <details><summary>Train BoT-SORT-ReID</summary>
+
+Refer to the [README](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID/tree/main/BoT-SORT/fast_reid/datasets#readme) for more information.
 
 ```bash
 $ cd BoT-SORT/

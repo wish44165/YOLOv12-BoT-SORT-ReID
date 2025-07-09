@@ -378,6 +378,8 @@ def detect(save_img=False):
                                 save_path += '.mp4'
                             vid_writer = cv2.VideoWriter(save_path, cv2.VideoWriter_fourcc(*'mp4v'), fps, (w, h))
                         vid_writer.write(im0)
+        else:
+            vid_writer.write(im0s)
 
         # Update progress bar
         pbar.update(1)
