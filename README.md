@@ -76,7 +76,7 @@ This repository provides a strong baseline for multi-UAV tracking in thermal inf
 
 
 
-<details open><summary>📹 Preview - Vision in Action</summary>
+<details><summary>📹 Preview - Vision in Action</summary>
 
 A complete visual overview of all training and test scenarios featured in the upcoming evaluation platform.
 
@@ -103,16 +103,22 @@ Scenarios are categorized to evaluate tracking performance under diverse conditi
 
 
 
-<details><summary>📹 Preview - Vision in Action: Training Videos</summary>
+<details open><summary>📹 Preview - Vision in Action: Training Videos</summary>
 
-Details soon.
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15853476.svg)](https://doi.org/10.5281/zenodo.15853476)
+
+Overview of all training videos featured in the upcoming evaluation platform.
+
+[demo_train.webm](https://github.com/user-attachments/assets/e01c0bb5-f08e-4a76-829f-7d2ea717184e)
+
+🔗 Full video available at: [Training Videos](https://youtu.be/rny0-nyFBk0?si=jxCPlCcHgU4zcUwU)
 
 </details>
 
 
 
 
-<details><summary>📹 Preview - Vision in Action: Testing Videos</summary>
+<details><summary>📹 Preview - Vision in Action: Test Videos</summary>
 
 Details soon.
 
@@ -167,6 +173,7 @@ Stay tuned for future releases and demos.
 
 ## 🗞️ News
 
+- **July 13, 2025**: The [training data](https://doi.org/10.5281/zenodo.15853476) for the evaluation is now available.
 - **June 21, 2025**: Training scripts for [YOLOv12](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID#-reproduction) and [BoT-SORT-ReID](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID#-reproduction) are now available.
 - **June 12, 2025**: 🥉 **3rd Place Award in The 4th Anti-UAV Workshop & Challenge Track 3**.
 - **June 6, 2025**: Corrected mistyped numbers in [Table 1](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID/tree/main/assets/Table_1.png) .
@@ -661,6 +668,14 @@ If you find this project helpful for your research or applications, we would app
     pages     = {6573-6582}
 }
 ```
+
+<a href="https://www.star-history.com/#wish44165/YOLOv12-BoT-SORT-ReID&Date">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=wish44165/YOLOv12-BoT-SORT-ReID&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=wish44165/YOLOv12-BoT-SORT-ReID&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=wish44165/YOLOv12-BoT-SORT-ReID&type=Date" />
+ </picture>
+</a>
 
 
 
