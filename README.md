@@ -78,7 +78,7 @@ This repository provides a strong baseline for multi-UAV tracking in thermal inf
 
 <details><summary>📹 Preview - Vision in Action</summary>
 
-A complete visual overview of all training and test scenarios featured in the upcoming evaluation platform.
+A complete visual overview of all training and test videos.
 
 [vision_in_action.webm](https://github.com/user-attachments/assets/f50d8e90-63b8-4b62-84ca-7e71c0750c67)
 
@@ -107,7 +107,7 @@ Scenarios are categorized to evaluate tracking performance under diverse conditi
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15853476.svg)](https://doi.org/10.5281/zenodo.15853476)
 
-Overview of all training videos featured in the upcoming evaluation platform.
+Overview of all training videos for the upcoming evaluation platform.
 
 [demo_train.webm](https://github.com/user-attachments/assets/e01c0bb5-f08e-4a76-829f-7d2ea717184e)
 
@@ -656,7 +656,7 @@ $ ./run_track3.sh
 
 ## 📜 Citation
 
-If you find this project helpful for your research or applications, we would appreciate it if you could give it a star and cite the paper.
+If you find this project helpful for your research or applications, we would appreciate it if you could cite the paper and give it a star.
 
 ```
 @InProceedings{Chen_2025_CVPR,
@@ -686,4 +686,4 @@ If you find this project helpful for your research or applications, we would app
 
 ## 🙏 Acknowledgments
 
-A large portion of the code is adapted from [YOLOv12](https://github.com/sunsmarterjie/yolov12) and [BoT-SORT](https://github.com/NirAharon/BoT-SORT). Thanks for their excellent work!
+A large portion of the code builds upon [YOLOv12](https://github.com/sunsmarterjie/yolov12), [BoT-SORT](https://github.com/NirAharon/BoT-SORT), and [TrackEval](https://github.com/JonathonLuiten/TrackEval). Thanks for their excellent work!
