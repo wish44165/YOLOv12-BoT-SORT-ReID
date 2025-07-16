@@ -1,6 +1,15 @@
-<details><summary>TrackEval</details>
+## TrackEval
 
-- [The Official Repository](https://github.com/JonathonLuiten/TrackEval)
+
+
+
+We use the Higher Order Tracking Accuracy ([HOTA](https://link.springer.com/article/10.1007/s11263-020-01375-2)), Multiple Object Tracking Accuracy ([MOTA](https://link.springer.com/article/10.1155/2008/246309)), and Identification F1 Score ([IDF1](https://arxiv.org/abs/1609.01775)) metrics, as implemented in the [TrackEval](https://github.com/JonathonLuiten/TrackEval) repository, to evaluate multi-object tracking performance. We appreciate the authors' excellent work in developing this valuable evaluation tool.
+
+
+
+
+
+<details><summary>TrackEval</summary>
 
 # TrackEval
 *Code for evaluating object tracking.*
@@ -204,4 +213,4 @@ Furthermore, if you use the HOTA metrics, please cite the following paper:
 
 If you use any other metrics please also cite the relevant papers, and don't forget to cite each of the benchmarks you evaluate on.
 
-</summary>
+</details>
