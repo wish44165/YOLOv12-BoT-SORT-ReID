@@ -76,57 +76,6 @@ This repository provides a strong baseline for multi-UAV tracking in thermal inf
 
 
 
-<details><summary>📹 Preview - Vision in Action</summary>
-
-A complete visual overview of all training and test videos.
-
-[vision_in_action.webm](https://github.com/user-attachments/assets/f50d8e90-63b8-4b62-84ca-7e71c0750c67)
-
-🔗 Full video available at: [Overview](https://youtu.be/0-Sn_mxRPJw?si=xfFXvBNoQz8zxnbK)
-
-Scenarios are categorized to evaluate tracking performance under diverse conditions:
-
-- **Takeoff** - UAV launch phase
-- **L** - Larger UAV target
-- **C** - Cloud background
-- **CF** - Cloud (Fewer UAVs)
-- **T** - Tree background
-- **TF** - Tree (Fewer UAVs)
-- **B** - Scene with buildings
-- **BB1** - Building Background 1
-- **BB2** - Building Background 2
-- **BB2P** - Building Background 2 (UAV partially out of view)
-- **Landing** - UAV landing phase
-
-</details>
-
-
-
-
-<details open><summary>📹 Preview - Vision in Action: Training Videos</summary>
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15853476.svg)](https://doi.org/10.5281/zenodo.15853476)
-
-Overview of all training videos for the upcoming evaluation platform.
-
-[demo_train.webm](https://github.com/user-attachments/assets/e01c0bb5-f08e-4a76-829f-7d2ea717184e)
-
-🔗 Full video available at: [Training Videos](https://youtu.be/rny0-nyFBk0?si=jxCPlCcHgU4zcUwU)
-
-</details>
-
-
-
-
-<details><summary>📹 Preview - Vision in Action: Test Videos</summary>
-
-Details soon.
-
-</details>
-
-
-
-
 <details><summary>📹 Preview - Custom Model Inference</summary>
 
 This section showcases example videos processed using a custom-trained model. The scenes are not limited to UAV footage or single-class detection. See [🚀 Quickstart: Installation and Demonstration](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID?tab=readme-ov-file#-quickstart-installation-and-demonstration) → `Run Inference Using a Custom-Trained Model` for more details.
@@ -139,9 +88,7 @@ This section showcases example videos processed using a custom-trained model. Th
 
 </details>
 
-<details open><summary>2. Common Objects Underwater</summary>
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15828323.svg)](https://doi.org/10.5281/zenodo.15828323)
+<details><summary>2. Common Objects Underwater</summary>
 
 [cou.webm](https://github.com/user-attachments/assets/59a81337-245a-49a7-817e-422536199b19)
 
@@ -149,6 +96,14 @@ This section showcases example videos processed using a custom-trained model. Th
 
 </details>
 
+<details open><summary>3. UAVDB</summary>
+
+[uavdb.webm](https://github.com/user-attachments/assets/3eff3e71-4111-4792-b4f6-4f1371843978)
+
+🔗 Full video available at: [UAVDB.mp4](https://youtu.be/NOZ4yhgXF7Q?si=bPM0N3SjR6tcHH3z)
+
+</details>
+
 </details>
 
 
@@ -158,11 +113,101 @@ This section showcases example videos processed using a custom-trained model. Th
 
 
 
-## 🏁 Upcoming
+## 🏁 Beyond Strong Baseline: Multi-UAV Tracking Competition ₊˚⊹
 
-Stay tuned for future releases and demos.
 
-- **Vision in Action**: Tracking Evaluation Platform
+
+
+<details><summary>📹 Preview - Vision in Action: Overview of All Videos</summary>
+
+A complete visual overview of all training and test videos.
+
+[vision_in_action.webm](https://github.com/user-attachments/assets/f50d8e90-63b8-4b62-84ca-7e71c0750c67)
+
+🔗 Full video available at: [Overview](https://youtu.be/0-Sn_mxRPJw?si=xfFXvBNoQz8zxnbK)
+
+Scenarios are categorized to evaluate tracking performance under diverse conditions:
+
+- **Takeoff** - UAV launch phase: 2 videos.
+- **L** - Larger UAV target: 15 videos.
+- **C** - Cloud background: 39 videos.
+- **CF** - Cloud (Fewer UAVs): 18 videos.
+- **T** - Tree background: 68 videos.
+- **TF** - Tree (Fewer UAVs): 14 videos.
+- **B** - Scene with buildings: 11 videos.
+- **BB1** - Building Background 1: 4 videos.
+- **BB2** - Building Background 2: 17 videos.
+- **BB2P** - Building Background 2 (UAV partially out of view): 8 videos.
+- **Landing** - UAV landing phase: 4 videos.
+
+**TOTAL: 200 videos (151,384 frames)**
+
+</details>
+
+
+
+
+<details><summary>📹 Preview - Vision in Action: Training Videos</summary>
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15853476.svg)](https://doi.org/10.5281/zenodo.15853476)
+
+Overview of all training videos for the upcoming evaluation platform.
+
+[demo_train.webm](https://github.com/user-attachments/assets/e01c0bb5-f08e-4a76-829f-7d2ea717184e)
+
+🔗 Full video available at: [Training Videos](https://youtu.be/rny0-nyFBk0?si=jxCPlCcHgU4zcUwU)
+
+- **Takeoff** - UAV launch phase: 1 videos.
+- **L** - Larger UAV target: 8 videos.
+- **C** - Cloud background: 20 videos.
+- **CF** - Cloud (Fewer UAVs): 9 videos.
+- **T** - Tree background: 34 videos.
+- **TF** - Tree (Fewer UAVs): 7 videos.
+- **B** - Scene with buildings: 6 videos.
+- **BB1** - Building Background 1: 2 videos.
+- **BB2** - Building Background 2: 9 videos.
+- **BB2P** - Building Background 2 (UAV partially out of view): 4 videos.
+- **Landing** - UAV landing phase: 2 videos.
+
+**TOTAL: 102 videos (77,293 frames)**
+
+</details>
+
+
+
+
+<details open><summary>📹 Preview - Vision in Action: Test Videos</summary>
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.16299533.svg)](https://doi.org/10.5281/zenodo.16299533)
+
+[demo_test.webm](https://github.com/user-attachments/assets/15e9143e-303f-4ef1-849d-735f8763e112)
+
+🔗 Full video available at: [Test Videos](https://youtu.be/G_8fE9njTRs?si=xUJjaYYC3D81m3Na)
+
+- **Takeoff** - UAV launch phase: 1 videos.
+- **L** - Larger UAV target: 7 videos.
+- **C** - Cloud background: 19 videos.
+- **CF** - Cloud (Fewer UAVs): 9 videos.
+- **T** - Tree background: 34 videos.
+- **TF** - Tree (Fewer UAVs): 7 videos.
+- **B** - Scene with buildings: 5 videos.
+- **BB1** - Building Background 1: 2 videos.
+- **BB2** - Building Background 2: 8 videos.
+- **BB2P** - Building Background 2 (UAV partially out of view): 4 videos.
+- **Landing** - UAV landing phase: 2 videos.
+
+**TOTAL: 98 videos (74,538 frames)**
+
+</details>
+
+
+
+
+<details><summary>📹 Preview - Vision in Action: Competition</summary>
+
+Details soon.
+
+</details>
 
 
 
@@ -173,6 +218,7 @@ Stay tuned for future releases and demos.
 
 ## 🗞️ News
 
+- **July 23, 2025**: The [test data](https://doi.org/10.5281/zenodo.16299533) for the evaluation is now available.
 - **July 13, 2025**: The [training data](https://doi.org/10.5281/zenodo.15853476) for the evaluation is now available.
 - **June 21, 2025**: Training scripts for [YOLOv12](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID#-reproduction) and [BoT-SORT-ReID](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID#-reproduction) are now available.
 - **June 12, 2025**: 🥉 **3rd Place Award in The 4th Anti-UAV Workshop & Challenge Track 3**.
@@ -379,8 +425,11 @@ This project also supports flexible inference using a custom-trained model for a
 
 ```bash
 $ cd BoT-SORT/
+```
 
-# 1. Multi-Class on a Walkway Scene
+### 1. Multi-Class on a Walkway Scene
+
+```bash
 $ wget https://github.com/sunsmarterjie/yolov12/releases/download/v1.0/yolov12x.pt
 $ wget https://github.com/FoundationVision/ByteTrack/raw/main/videos/palace.mp4
 $ python3 tools/inference.py \
@@ -389,8 +438,13 @@ $ python3 tools/inference.py \
     --img-size 640 \
     --device "0" \
     --save_path_answer ./submit/palace/
+```
 
-# 2. Common Objects Underwater
+### 2. Common Objects Underwater
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15828323.svg)](https://doi.org/10.5281/zenodo.15828323)
+
+```bash
 for f in ./videos/COU/*.mp4; do
     python3 tools/inference.py \
         --weights ./yolov12/runs/det/train/weights/best.pt \
@@ -398,6 +452,21 @@ for f in ./videos/COU/*.mp4; do
         --img-size 1600 \
         --device "0" \
         --save_path_answer ./submit/COU/
+done
+```
+
+### 3. UAVDB
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.16342697.svg)](https://doi.org/10.5281/zenodo.16342697)
+
+```bash
+for f in ./videos/UAVDB/*.mp4; do
+    python3 tools/inference.py \
+        --weights ./yolov12/runs/det/train/weights/best.pt \
+        --source "$f" \
+        --img-size 1600 \
+        --device "0" \
+        --save_path_answer ./submit/UAVDB/
 done
 ```
 
@@ -686,4 +755,4 @@ If you find this project helpful for your research or applications, we would app
 
 ## 🙏 Acknowledgments
 
-A large portion of the code builds upon [YOLOv12](https://github.com/sunsmarterjie/yolov12), [BoT-SORT](https://github.com/NirAharon/BoT-SORT), and [TrackEval](https://github.com/JonathonLuiten/TrackEval). Thanks for their excellent work!
+Much of the code builds upon [YOLOv12](https://github.com/sunsmarterjie/yolov12), [BoT-SORT](https://github.com/NirAharon/BoT-SORT), and [TrackEval](https://github.com/JonathonLuiten/TrackEval). We also sincerely thank the organizers of the [Anti-UAV](https://github.com/ZhaoJ9014/Anti-UAV) benchmark for providing the valuable dataset. We greatly appreciate their contributions!

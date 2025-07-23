@@ -248,6 +248,13 @@ def detect(save_img=False):
 
     for path, img, im0s, vid_cap in dataset:
 
+        # === Ensure save_path is always defined ===
+        if isinstance(path, list):
+            p = Path(path[0])
+        else:
+            p = Path(path)
+        save_path = str(save_dir / p.name)  # save_dir must be predefined
+
         img = torch.from_numpy(img).to(device)
         img = img.half() if half else img.float()  # uint8 to fp16/32
         img /= 255.0  # 0 - 255 to 0.0 - 1.0
@@ -379,6 +386,20 @@ def detect(save_img=False):
                             vid_writer = cv2.VideoWriter(save_path, cv2.VideoWriter_fourcc(*'mp4v'), fps, (w, h))
                         vid_writer.write(im0)
         else:
+            if vid_writer is None:
+                # Fallback: initialize VideoWriter even if no detections
+                if vid_cap:
+                    fps = vid_cap.get(cv2.CAP_PROP_FPS)
+                    w = int(vid_cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+                    h = int(vid_cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+                else:
+                    fps, w, h = 30, im0s.shape[1], im0s.shape[0]
+                    save_path += '.mp4'
+                vid_writer = cv2.VideoWriter(save_path, cv2.VideoWriter_fourcc(*'mp4v'), fps, (w, h))
+
+                if not vid_writer.isOpened():
+                    raise RuntimeError(f"Failed to open VideoWriter for {save_path}")
+
             vid_writer.write(im0s)
 
         # Update progress bar
