@@ -201,7 +201,7 @@ Scenarios are categorized to evaluate tracking performance under diverse conditi
 
 
 
-<details open><summary>📹 Preview - Vision in Action: Competition</summary>
+<details open><summary>📹 Preview - Vision in Action: Beyond Strong Baseline</summary>
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.16458805.svg)](https://doi.org/10.5281/zenodo.16458805)
 
