@@ -151,8 +151,6 @@ Scenarios are categorized to evaluate tracking performance under diverse conditi
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15853476.svg)](https://doi.org/10.5281/zenodo.15853476)
 
-Overview of all training videos for the upcoming evaluation platform.
-
 [demo_train.webm](https://github.com/user-attachments/assets/e01c0bb5-f08e-4a76-829f-7d2ea717184e)
 
 🔗 Full video available at: [Training Videos](https://youtu.be/rny0-nyFBk0?si=jxCPlCcHgU4zcUwU)
@@ -176,7 +174,7 @@ Overview of all training videos for the upcoming evaluation platform.
 
 
 
-<details open><summary>📹 Preview - Vision in Action: Test Videos</summary>
+<details><summary>📹 Preview - Vision in Action: Test Videos</summary>
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.16299533.svg)](https://doi.org/10.5281/zenodo.16299533)
 
@@ -203,9 +201,13 @@ Overview of all training videos for the upcoming evaluation platform.
 
 
 
-<details><summary>📹 Preview - Vision in Action: Competition</summary>
+<details open><summary>📹 Preview - Vision in Action: Competition</summary>
 
-Details soon.
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.16458805.svg)](https://doi.org/10.5281/zenodo.16458805)
+
+[<img src="https://github.com/wish44165/YOLOv12-BoT-SORT-ReID/blob/main/assets/beyond_strong_baseline.png" width="100%">](https://www.codabench.org/competitions/9888/)
+
+🔗 View the competition on [Codabench](https://www.codabench.org/competitions/9888/)
 
 </details>
 
@@ -218,6 +220,7 @@ Details soon.
 
 ## 🗞️ News
 
+- **July 27, 2025**: [🏁 Beyond Strong Baseline](https://www.codabench.org/competitions/9888/) is now open for registration.
 - **July 23, 2025**: The [test data](https://doi.org/10.5281/zenodo.16299533) for the evaluation is now available.
 - **July 13, 2025**: The [training data](https://doi.org/10.5281/zenodo.15853476) for the evaluation is now available.
 - **June 21, 2025**: Training scripts for [YOLOv12](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID#-reproduction) and [BoT-SORT-ReID](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID#-reproduction) are now available.
