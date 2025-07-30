@@ -71,7 +71,12 @@ class MOT20(ImageDataset):
     def process_dir(self, dir_path, is_train=True):
 
         img_paths = glob.glob(osp.join(dir_path, '*.bmp'))
-        pattern = re.compile(r'([-\d]+)_MultiUAV-(\d)')
+
+        # The 4th Anti-UAV #
+        # pattern = re.compile(r'([-\d]+)_MultiUAV-(\d)')
+
+        # Beyond Strong Baseline #
+        pattern = re.compile(r'(\d+)_\w+_\d+_(\d+)_acc_data\.bmp')
 
         data = []
         for img_path in img_paths:

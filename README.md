@@ -220,9 +220,10 @@ Scenarios are categorized to evaluate tracking performance under diverse conditi
 
 ## 🗞️ News
 
+- **July 30, 2025**: [🔧 Corrected test data for the BB2P_02 sequence](https://doi.org/10.5281/zenodo.16601508) to fix a minor defect.
 - **July 27, 2025**: [🏁 Beyond Strong Baseline](https://www.codabench.org/competitions/9888/) is now open for registration.
-- **July 23, 2025**: The [test data](https://doi.org/10.5281/zenodo.16299533) for the evaluation is now available.
-- **July 13, 2025**: The [training data](https://doi.org/10.5281/zenodo.15853476) for the evaluation is now available.
+- **July 23, 2025**: The [test data](https://doi.org/10.5281/zenodo.16299533) for the competition is now available.
+- **July 13, 2025**: The [training data](https://doi.org/10.5281/zenodo.15853476) for the competition is now available.
 - **June 21, 2025**: Training scripts for [YOLOv12](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID#-reproduction) and [BoT-SORT-ReID](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID#-reproduction) are now available.
 - **June 12, 2025**: 🥉 **3rd Place Award in The 4th Anti-UAV Workshop & Challenge Track 3**.
 - **June 6, 2025**: Corrected mistyped numbers in [Table 1](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID/tree/main/assets/Table_1.png) .

@@ -413,7 +413,15 @@ def detect(save_img=False):
     ################
     # save file
     ################
-    answer_file = os.path.join(opt.save_path_answer, f"{foldern}.txt")
+    # Check if foldern has an extension
+    name, ext = os.path.splitext(foldern)
+    if ext:  # If there is a file extension (e.g., '.mp4')
+        base_name = name
+    else:    # If there is no extension
+        base_name = foldern
+
+    answer_file = os.path.join(opt.save_path_answer, f"{base_name}.txt")
+
     with open(answer_file, "w") as file:
         for row in res_list:
             file.write(",".join(map(str, row)) + "\n")  # Convert each element to string and join with ','
