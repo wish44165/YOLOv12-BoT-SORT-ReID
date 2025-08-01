@@ -207,6 +207,8 @@ Scenarios are categorized to evaluate tracking performance under diverse conditi
 
 [<img src="https://github.com/wish44165/YOLOv12-BoT-SORT-ReID/blob/main/assets/beyond_strong_baseline.png" width="100%">](https://www.codabench.org/competitions/9888/)
 
+[<img src="https://github.com/wish44165/YOLOv12-BoT-SORT-ReID/blob/main/assets/beyond_strong_baseline_strong_baseline.png" width="100%">](https://www.codabench.org/competitions/9888/#/results-tab)
+
 🔗 View the competition on [Codabench](https://www.codabench.org/competitions/9888/)
 
 </details>
@@ -220,6 +222,7 @@ Scenarios are categorized to evaluate tracking performance under diverse conditi
 
 ## 🗞️ News
 
+- **August 1, 2025**: Submit now and challenge the [Strong Baseline](https://www.codabench.org/competitions/9888/#/results-tab) .
 - **July 30, 2025**: [🔧 Corrected test data for the BB2P_02 sequence](https://doi.org/10.5281/zenodo.16601508) to fix a minor defect.
 - **July 27, 2025**: [🏁 Beyond Strong Baseline](https://www.codabench.org/competitions/9888/) is now open for registration.
 - **July 23, 2025**: The [test data](https://doi.org/10.5281/zenodo.16299533) for the competition is now available.
