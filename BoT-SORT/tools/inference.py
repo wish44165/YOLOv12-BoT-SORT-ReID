@@ -128,30 +128,12 @@ def detect(save_img=False):
         ('rtsp://', 'rtmp://', 'http://', 'https://'))
 
 
+
+
     # Initialize
     set_logging()
     device = select_device(opt.device)
     half = device.type != 'cpu'  # half precision only supported on CUDA
-
-    # Load YOLOv12 model
-    model = attempt_load(weights, map_location=device)  # load FP32 model
-    # print(weights)
-    # model = YOLO(weights[0])
-    stride = int(model.stride.max())  # model stride
-    imgsz = check_img_size(imgsz, s=stride)  # check img_size
-
-    if trace:
-        model = TracedModel(model, device, opt.img_size)
-
-    if half:
-        model.half()  # to FP16
-
-    # Second-stage classifier
-    classify = False
-    if classify:
-        modelc = load_classifier(name='resnet101', n=2)  # initialize
-        modelc.load_state_dict(torch.load('weights/resnet101.pt', map_location=device)['model']).to(device).eval()
-
 
     # Check whether the source path is a video file or a folder of image frames
     if is_video_file(opt.source):
@@ -162,9 +144,75 @@ def detect(save_img=False):
         print("="*20, "Source is a folder of images", "="*20)
         total_frames = len(os.listdir(opt.source))
 
-    
     folderPath = opt.source
     foldern = os.path.basename(os.path.normpath(folderPath))
+
+
+
+
+    detectedIdx = 0
+
+    # ===== Detect from Labels =====
+    if os.path.isdir(weights[0]):
+
+        dataset = LoadImages(folderPath, img_size=imgsz, stride=32)
+
+        detectedFolder = weights[0]
+        detectedFiles = sorted(os.listdir(detectedFolder))
+        # print(detectedFiles)
+        # ['Clip_1_00000.txt', 'Clip_1_00001.txt', ...]
+
+        names = {0: 'uav'}
+
+        classify = False
+
+
+
+
+    # ===== Detect from Models =====
+    else:
+
+
+
+        # Load YOLOv12 model
+        model = attempt_load(weights, map_location=device)  # load FP32 model
+        # print(weights)
+        # model = YOLO(weights[0])
+        stride = int(model.stride.max())  # model stride
+        imgsz = check_img_size(imgsz, s=stride)  # check img_size
+
+        if trace:
+            model = TracedModel(model, device, opt.img_size)
+
+        if half:
+            model.half()  # to FP16
+
+        # Second-stage classifier
+        classify = False
+        if classify:
+            modelc = load_classifier(name='resnet101', n=2)  # initialize
+            modelc.load_state_dict(torch.load('weights/resnet101.pt', map_location=device)['model']).to(device).eval()
+
+
+        # Set Dataloader
+        if webcam:
+            view_img = check_imshow()
+            cudnn.benchmark = True  # set True to speed up constant image size inference
+            dataset = LoadStreams(folderPath, img_size=imgsz, stride=stride)
+        else:
+            dataset = LoadImages(folderPath, img_size=imgsz, stride=stride)
+
+
+        # Run inference
+        if device.type != 'cpu':
+            model(torch.zeros(1, 3, imgsz, imgsz).to(device).type_as(next(model.parameters())))  # run once
+
+
+        # Get names and colors
+        names = model.module.names if hasattr(model, 'module') else model.names
+
+
+
 
     # Directories
     # save_dir = Path(increment_path(Path(opt.project) / opt.name, exist_ok=opt.exist_ok))  # increment run
@@ -175,25 +223,15 @@ def detect(save_img=False):
         save_dir = Path(Path(opt.project) / foldern, exist_ok=opt.exist_ok)
     (save_dir / 'labels' if save_txt else save_dir).mkdir(parents=True, exist_ok=True)  # make dir
 
-    # Set Dataloader
-    vid_path, vid_writer = None, None
-    if webcam:
-        view_img = check_imshow()
-        cudnn.benchmark = True  # set True to speed up constant image size inference
-        dataset = LoadStreams(folderPath, img_size=imgsz, stride=stride)
-    else:
-        dataset = LoadImages(folderPath, img_size=imgsz, stride=stride)
 
-    # Get names and colors
-    names = model.module.names if hasattr(model, 'module') else model.names
+    vid_path, vid_writer = None, None
+
     colors = [[random.randint(0, 255) for _ in range(3)] for _ in range(100)]
 
     # Create tracker
     tracker = BoTSORT(opt, frame_rate=30.0)
 
-    # Run inference
-    if device.type != 'cpu':
-        model(torch.zeros(1, 3, imgsz, imgsz).to(device).type_as(next(model.parameters())))  # run once
+
     t0 = time.time()
 
 
@@ -246,6 +284,9 @@ def detect(save_img=False):
     # Initialize tqdm progress bar
     pbar = tqdm(total=total_frames, desc=f'Processing {opt.source}', unit='frame')
 
+
+
+
     for path, img, im0s, vid_cap in dataset:
 
         # === Ensure save_path is always defined ===
@@ -261,10 +302,59 @@ def detect(save_img=False):
         if img.ndimension() == 3:
             img = img.unsqueeze(0)
 
+
         # Inference
         t1 = time_synchronized()
-        # print('='*20)
-        pred = model(img, augment=opt.augment)[0]
+
+
+
+        # ===== Detect from Labels =====
+        if os.path.isdir(weights[0]):
+
+            fn = detectedFolder + detectedFiles[detectedIdx]
+
+
+            # Read YOLO-format labels
+            detectedBbox = []
+            with open(fn, 'r') as f:
+                for line in f:
+                    cls, cx, cy, w, h, conf = map(float, line.strip().split())
+                    # convert center/width/height -> x1, y1, x2, y2
+                    cx *= imgsz
+                    cy *= imgsz * original_height / original_width
+                    w *= imgsz
+                    h *= imgsz * original_height / original_width
+                    detectedBbox.append([cx, cy, w, h, conf])
+
+            # Create pred tensor based on how many bboxes there are
+            num_boxes = len(detectedBbox)
+            pred = torch.zeros((1, 5, num_boxes), dtype=torch.float16, device='cuda')
+
+            # Fill in detections
+            for i, det in enumerate(detectedBbox):
+                pred[0, 0, i] = det[0]  # x
+                pred[0, 1, i] = det[1]  # y
+                pred[0, 2, i] = det[2]  # w
+                pred[0, 3, i] = det[3]  # h
+                pred[0, 4, i] = det[4]  # conf
+
+            # print(pred.shape)  # e.g., torch.Size([1, 5, 3]) if 3 boxes
+
+            # sys.exit()
+
+
+        # ===== Detect from Models =====
+        else:
+
+            # print('='*20)
+            pred = model(img, augment=opt.augment)[0]
+
+            # print(pred)
+            # print(pred.shape)
+            # sys.exit()
+            
+
+
 
         # Apply NMS
         # pred = non_max_suppression(pred, opt.conf_thres, opt.iou_thres, classes=opt.classes, agnostic=opt.agnostic_nms)
@@ -273,6 +363,8 @@ def detect(save_img=False):
         from ultralytics.utils.ops import non_max_suppression
         pred = non_max_suppression(pred, opt.conf_thres, opt.iou_thres, classes=opt.classes, agnostic=opt.agnostic_nms)[0]  # Keep only the first image's detections
         # print(pred.shape)  # Expected shape: (N, 6)
+
+
         t2 = time_synchronized()
 
         # Apply Classifier
@@ -401,6 +493,9 @@ def detect(save_img=False):
                     raise RuntimeError(f"Failed to open VideoWriter for {save_path}")
 
             vid_writer.write(im0s)
+
+
+        detectedIdx += 1
 
         # Update progress bar
         pbar.update(1)

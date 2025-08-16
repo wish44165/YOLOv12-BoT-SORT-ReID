@@ -96,11 +96,19 @@ This section showcases example videos processed using a custom-trained model. Th
 
 </details>
 
-<details open><summary>3. UAVDB</summary>
+<details><summary>3. UAVDB</summary>
 
 [uavdb.webm](https://github.com/user-attachments/assets/3eff3e71-4111-4792-b4f6-4f1371843978)
 
 🔗 Full video available at: [UAVDB.mp4](https://youtu.be/NOZ4yhgXF7Q?si=bPM0N3SjR6tcHH3z)
+
+</details>
+
+<details open><summary>4. NPS-Drones dataset</summary>
+
+[nps.webm](https://github.com/user-attachments/assets/78209701-f61d-480b-9bb4-c0e8697d6148)
+
+🔗 Full video available at: [NPS.mp4](https://youtu.be/a5jTaHiARkE?si=mIBWeIPpI1IMGF6O)
 
 </details>
 
@@ -223,7 +231,7 @@ Scenarios are categorized to evaluate tracking performance under diverse conditi
 ## 🗞️ News
 
 - **August 1, 2025**: Submit now and challenge the [Strong Baseline](https://www.codabench.org/competitions/9888/#/results-tab) .
-- **July 30, 2025**: [🔧 Corrected test data for the BB2P_02 sequence](https://doi.org/10.5281/zenodo.16601508) to fix a minor defect.
+- **July 30, 2025**: [Corrected test data for the BB2P_02 sequence](https://doi.org/10.5281/zenodo.16601508) to fix a minor defect.
 - **July 27, 2025**: [🏁 Beyond Strong Baseline](https://www.codabench.org/competitions/9888/) is now open for registration.
 - **July 23, 2025**: The [test data](https://doi.org/10.5281/zenodo.16299533) for the competition is now available.
 - **July 13, 2025**: The [training data](https://doi.org/10.5281/zenodo.15853476) for the competition is now available.
@@ -258,15 +266,17 @@ $ conda activate yolov12_botsort
 $ git clone https://github.com/wish44165/YOLOv12-BoT-SORT-ReID.git
 $ cd YOLOv12-BoT-SORT-ReID/BoT-SORT/yolov12/
 $ wget https://github.com/Dao-AILab/flash-attention/releases/download/v2.7.3/flash_attn-2.7.3+cu11torch2.2cxx11abiFALSE-cp311-cp311-linux_x86_64.whl
-$ pip install -r requirements.txt
+# Install dependencies (choose one):
+$ pip install -r requirements_mac.txt    # macOS
+$ pip install -r requirements.txt        # Linux
 $ cd ../
-$ pip3 install torch torchvision torchaudio
-$ pip3 install -r requirements.txt
-$ pip3 install ultralytics
-$ pip3 install cython; pip3 install 'git+https://github.com/cocodataset/cocoapi.git#subdirectory=PythonAPI'
-$ pip3 install cython_bbox
-$ pip3 install faiss-cpu
-$ pip3 install seaborn
+$ pip install torch torchvision torchaudio
+$ pip install -r requirements.txt
+$ pip install ultralytics
+$ pip install cython; pip install 'git+https://github.com/cocodataset/cocoapi.git#subdirectory=PythonAPI'
+$ pip install cython_bbox
+$ pip install faiss-cpu
+$ pip install seaborn
 ```
 
 </details>
@@ -317,16 +327,16 @@ Toy example with three tracks, including SOT and MOT.
 $ cd BoT-SORT/
 
 # Track 1
-$ python3 tools/predict_track1.py --weights ./yolov12/weights/SOT_yolov12l.pt --source ../data/demo/SOT/Track1/ --img-size 640 --device "0" --conf-thres 0.01 --iou-thres 0.01 --track_high_thresh 0.1 --track_low_thresh 0.01 --fuse-score --agnostic-nms --min_box_area 4 --save_path_answer ./submit/track1/demo --hide-labels-name
+$ python tools/predict_track1.py --weights ./yolov12/weights/SOT_yolov12l.pt --source ../data/demo/SOT/Track1/ --img-size 640 --device "0" --conf-thres 0.01 --iou-thres 0.01 --track_high_thresh 0.1 --track_low_thresh 0.01 --fuse-score --agnostic-nms --min_box_area 4 --save_path_answer ./submit/track1/demo --hide-labels-name
 # output: ./runs/detect/, ./submit/track1/demo/
 
 # Track 2
-$ python3 tools/predict_track2.py --weights ./yolov12/weights/SOT_yolov12l.pt --source ../data/demo/SOT/Track2/ --img-size 640 --device "0" --conf-thres 0.01 --iou-thres 0.01 --track_high_thresh 0.1 --track_low_thresh 0.01 --fuse-score --agnostic-nms --min_box_area 1 --save_path_answer ./submit/track2/demo --hide-labels-name
+$ python tools/predict_track2.py --weights ./yolov12/weights/SOT_yolov12l.pt --source ../data/demo/SOT/Track2/ --img-size 640 --device "0" --conf-thres 0.01 --iou-thres 0.01 --track_high_thresh 0.1 --track_low_thresh 0.01 --fuse-score --agnostic-nms --min_box_area 1 --save_path_answer ./submit/track2/demo --hide-labels-name
 # output: ./runs/detect/, ./submit/track2/demo/
 
 # Track 3
-$ python3 tools/predict_track3.py --weights ./yolov12/weights/MOT_yolov12n.pt --source ../data/demo/MOT/ --img-size 1600 --device "0" --track_buffer 60 --save_path_answer ./submit/track3/demo --hide-labels-name
-$ python3 tools/predict_track3.py --weights ./yolov12/weights/MOT_yolov12n.pt --source ../data/demo/MOT/ --img-size 1600 --device "0" --track_buffer 60 --save_path_answer ./submit/track3/demo --with-reid --fast-reid-config logs/sbs_S50/config.yaml --fast-reid-weights logs/sbs_S50/model_0016.pth --hide-labels-name
+$ python tools/predict_track3.py --weights ./yolov12/weights/MOT_yolov12n.pt --source ../data/demo/MOT/ --img-size 1600 --device "0" --track_buffer 60 --save_path_answer ./submit/track3/demo --hide-labels-name
+$ python tools/predict_track3.py --weights ./yolov12/weights/MOT_yolov12n.pt --source ../data/demo/MOT/ --img-size 1600 --device "0" --track_buffer 60 --save_path_answer ./submit/track3/demo --with-reid --fast-reid-config logs/sbs_S50/config.yaml --fast-reid-weights logs/sbs_S50/model_0016.pth --hide-labels-name
 # output: ./runs/detect/, ./submit/track3/demo/
 
 # Heatmap
@@ -343,7 +353,7 @@ $ python heatmap.py
 This project supports flexible inference on image folders and video files, with or without initial object positions, specifically for MOT task.
 
 ```bash
-python3 tools/inference.py \
+python tools/inference.py \
     --weights ./yolov12/weights/MOT_yolov12n.pt \
     --source <path to folder or video> \
     --with-initial-positions \
@@ -363,7 +373,7 @@ Below are examples of supported inference settings:
 
 ```bash
 # 1. Inference on Image Folder (without initial position)
-python3 tools/inference.py \
+python tools/inference.py \
     --weights ./yolov12/weights/MOT_yolov12n.pt \
     --source ../data/demo/MOT/Test_imgs/MultiUAV-003/ \
     --img-size 1600 \
@@ -377,7 +387,7 @@ python3 tools/inference.py \
     --hide-labels-name
 
 # 2. Inference on Image Folder (with initial position)
-python3 tools/inference.py \
+python tools/inference.py \
     --weights ./yolov12/weights/MOT_yolov12n.pt \
     --source ../data/demo/MOT/Test_imgs/MultiUAV-003/ \
     --with-initial-positions \
@@ -393,7 +403,7 @@ python3 tools/inference.py \
     --hide-labels-name
 
 # 3. Inference on Video (without initial position)
-python3 tools/inference.py \
+python tools/inference.py \
     --weights ./yolov12/weights/MOT_yolov12n.pt \
     --source ../data/demo/MOT/MultiUAV-003.mp4 \
     --img-size 1600 \
@@ -407,7 +417,7 @@ python3 tools/inference.py \
     --hide-labels-name
 
 # 4. Inference on Video (with initial position)
-python3 tools/inference.py \
+python tools/inference.py \
     --weights ./yolov12/weights/MOT_yolov12n.pt \
     --source ../data/demo/MOT/MultiUAV-003.mp4 \
     --with-initial-positions \
@@ -439,7 +449,7 @@ $ cd BoT-SORT/
 ```bash
 $ wget https://github.com/sunsmarterjie/yolov12/releases/download/v1.0/yolov12x.pt
 $ wget https://github.com/FoundationVision/ByteTrack/raw/main/videos/palace.mp4
-$ python3 tools/inference.py \
+$ python tools/inference.py \
     --weights yolov12x.pt \
     --source palace.mp4 \
     --img-size 640 \
@@ -453,7 +463,7 @@ $ python3 tools/inference.py \
 
 ```bash
 for f in ./videos/COU/*.mp4; do
-    python3 tools/inference.py \
+    python tools/inference.py \
         --weights ./yolov12/runs/det/train/weights/best.pt \
         --source "$f" \
         --img-size 1600 \
@@ -468,7 +478,7 @@ done
 
 ```bash
 for f in ./videos/UAVDB/*.mp4; do
-    python3 tools/inference.py \
+    python tools/inference.py \
         --weights ./yolov12/runs/det/train/weights/best.pt \
         --source "$f" \
         --img-size 1600 \
@@ -476,6 +486,62 @@ for f in ./videos/UAVDB/*.mp4; do
         --save_path_answer ./submit/UAVDB/
 done
 ```
+
+### 4. NPS-Drones dataset
+
+
+
+```bash
+for f in ./videos/NPS/*.mp4; do
+    python tools/inference.py \
+        --weights ./yolov12/runs/det/train/weights/best.pt \
+        --source "$f" \
+        --img-size 1600 \
+        --device "0" \
+        --save_path_answer ./submit/NPS/
+done
+```
+
+</details>
+
+
+<details><summary>Run Inference on macOS</summary>
+
+This project also supports running inference on macOS. However, for efficiency reasons, performing both training and inference on a GPU is still recommended.
+
+When running on macOS, the following limitations apply:
+
+1. No GPU or MPS acceleration (CPU only).
+2. ReID is not supported.
+3. Initial position is not supported.
+
+Below are two examples of running inference on macOS.
+
+```bash
+# 1. Inference on Multi-Class on a Walkway Scene
+$ wget https://github.com/sunsmarterjie/yolov12/releases/download/v1.0/yolov12x.pt
+$ wget https://github.com/FoundationVision/ByteTrack/raw/main/videos/palace.mp4
+$ python tools/inference.py \
+    --weights yolov12x.pt \
+    --source palace.mp4 \
+    --img-size 640 \
+    --device "cpu" \
+    --save_path_answer ./submit/palace/
+
+# 2. Inference on MultiUAV Video
+python tools/inference.py \
+    --weights ./yolov12/weights/MOT_yolov12n.pt \
+    --source ../data/demo/MOT/MultiUAV-003.mp4 \
+    --img-size 1600 \
+    --track_buffer 60 \
+    --device "cpu" \
+    --agnostic-nms \
+    --save_path_answer ./submit/inference/
+```
+
+Inference time comparison for the two examples on GPU (Ubuntu) and CPU (macOS).
+
+<img src="https://github.com/wish44165/YOLOv12-BoT-SORT-ReID/blob/main/assets/inference_ubuntu_mac.png" width="100%">
 
 </details>
 
@@ -653,7 +719,7 @@ Executing the following commands can reproduce the leaderboard results.
 $ cd BoT-SORT/
 
 # Table 1
-$ python3 getInfo.py
+$ python getInfo.py
 ```
 
 </details>
@@ -666,7 +732,7 @@ Refer to the [README](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID/tree/ma
 $ cd BoT-SORT/yolov12/
 
 # Run training with default settings
-$ python3 train.py
+$ python train.py
 ```
 
 </details>
@@ -679,7 +745,7 @@ Refer to the [README](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID/tree/ma
 $ cd BoT-SORT/
 
 # Train with final config
-$ python3 fast_reid/tools/train_net.py --config-file ./logs/sbs_S50/config.yaml MODEL.DEVICE "cuda:0"
+$ python fast_reid/tools/train_net.py --config-file ./logs/sbs_S50/config.yaml MODEL.DEVICE "cuda:0"
 ```
 
 </details>
@@ -690,11 +756,11 @@ $ python3 fast_reid/tools/train_net.py --config-file ./logs/sbs_S50/config.yaml 
 $ cd BoT-SORT/
 
 # Track 1
-$ python3 tools/predict_track1.py --weights ./yolov12/weights/SOT_yolov12l.pt --source ../data/SOT/track1_test/ --img-size 640 --device "0" --conf-thres 0.01 --iou-thres 0.01 --track_high_thresh 0.1 --track_low_thresh 0.01 --fuse-score --agnostic-nms --min_box_area 4 --save_path_answer ./submit/track1/test --hide-labels-name
+$ python tools/predict_track1.py --weights ./yolov12/weights/SOT_yolov12l.pt --source ../data/SOT/track1_test/ --img-size 640 --device "0" --conf-thres 0.01 --iou-thres 0.01 --track_high_thresh 0.1 --track_low_thresh 0.01 --fuse-score --agnostic-nms --min_box_area 4 --save_path_answer ./submit/track1/test --hide-labels-name
 # output: ./runs/detect/, ./submit/track1/test/
 
 # Track 2
-$ python3 tools/predict_track2.py --weights ./yolov12/weights/SOT_yolov12l.pt --source ../data/SOT/track2_test/ --img-size 640 --device "0" --conf-thres 0.01 --iou-thres 0.01 --track_high_thresh 0.1 --track_low_thresh 0.01 --fuse-score --agnostic-nms --min_box_area 1 --save_path_answer ./submit/track2/test --hide-labels-name
+$ python tools/predict_track2.py --weights ./yolov12/weights/SOT_yolov12l.pt --source ../data/SOT/track2_test/ --img-size 640 --device "0" --conf-thres 0.01 --iou-thres 0.01 --track_high_thresh 0.1 --track_low_thresh 0.01 --fuse-score --agnostic-nms --min_box_area 1 --save_path_answer ./submit/track2/test --hide-labels-name
 # output: ./runs/detect/, ./submit/track2/test/
 
 # Track 3
