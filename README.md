@@ -224,6 +224,51 @@ Scenarios are categorized to evaluate tracking performance under diverse conditi
 
 
 
+### Participation
+
+<details><summary>Performance</summary>
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17089400.svg)](https://doi.org/10.5281/zenodo.17089400)
+
+[ViA_MultiUAV-261.webm](https://github.com/user-attachments/assets/dda89d21-7c25-4e33-b0cf-ab8fa126ac00)
+
+🔗 Full video available at: [Performance.mp4](https://youtu.be/uj-eFWOG9RU?si=BGWluZ9q2K1f0wwG)
+
+#### Public Leaderboard Phase
+
+| Methods                          | HOTA     | MOTA     | IDF1     |
+| :------------------------------: | :------: | :------: | :------: |
+| Strong Baseline (SB)             | 0.873908 | 0.628351 | 0.717146 |
+| SB + CLAHE                       | 0.836414 | 0.626376 | 0.686967 |
+| SB + Sobel-based Image Gradients | 0.823678 | 0.634651 | 0.680124 |
+| SB + Sobel-based Edge Sharpening | 0.831300 | 0.609124 | 0.680843 |
+| [TransVisDrone](https://github.com/tusharsangam/TransVisDrone) | 0.818562 | 0.602384 | 0.683446 |
+
+</details>
+
+<details><summary>Interpolation</summary>
+
+Interpolation commands for this competition. Example usage:
+
+```bash
+# input and output are both folders containing .txt files
+$ python tools/pre_interpolation.py --input ./submission --output ./pre_submission
+$ python tools/interpolation.py --txt_path ./pre_submission --save_path ./mid_submission
+$ python tools/post_interpolation.py --input ./mid_submission --output ./post_submission
+```
+
+#### Public Leaderboard Phase
+
+| Methods             | HOTA     | MOTA     | IDF1     |
+| :-----------------: | :------: | :------: | :------: |
+| TransVisDrone (TVD) | 0.818562 | 0.602384 | 0.683446 |
+| TVD + Interpolation | 0.832675 | 0.611150 | 0.689753 |
+
+</details>
+
+
+
+
 
 
 
@@ -489,7 +534,7 @@ done
 
 ### 4. NPS-Drones dataset
 
-
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.16891919.svg)](https://doi.org/10.5281/zenodo.16891919)
 
 ```bash
 for f in ./videos/NPS/*.mp4; do

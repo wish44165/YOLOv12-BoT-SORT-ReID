@@ -121,6 +121,23 @@ def write_results(filename, results):
                 f.write(line)
     print('save results to {}'.format(filename))
 
+
+# TransVisDrone
+def load_mapping(txt_path):
+    forward_map = {}
+    reverse_map = {}
+    
+    with open(txt_path, "r", encoding="utf-8") as f:
+        for line in f:
+            if "->" not in line:
+                continue
+            original, mapped = [x.strip() for x in line.split("->")]
+            forward_map[original] = mapped
+            reverse_map[mapped] = original
+    
+    return forward_map, reverse_map
+    
+
 def detect(save_img=False):
     source, weights, view_img, save_txt, imgsz, trace = opt.source, opt.weights, opt.view_img, opt.save_txt, opt.img_size, opt.trace
     save_img = not opt.nosave and not source.endswith('.txt')  # save inference images
@@ -152,19 +169,18 @@ def detect(save_img=False):
 
     detectedIdx = 0
 
-    # ===== Detect from Labels =====
+    # ===== Detect from Files =====
     if os.path.isdir(weights[0]):
 
         dataset = LoadImages(folderPath, img_size=imgsz, stride=32)
 
         detectedFolder = weights[0]
-        detectedFiles = sorted(os.listdir(detectedFolder))
-        # print(detectedFiles)
-        # ['Clip_1_00000.txt', 'Clip_1_00001.txt', ...]
 
         names = {0: 'uav'}
 
         classify = False
+
+        forward, reverse = load_mapping(opt.mapping)
 
 
 
@@ -235,47 +251,10 @@ def detect(save_img=False):
     t0 = time.time()
 
 
-    # Prior Knowledge: Load ground truth from IR_label.json (expected format: {"gt_rect": [[x, y, w, h]]})
-    # could be empty (MultiUAV-068)
-    if opt.with_pos:
-        gt_path = opt.pos_config
-        prior_box = []
-
-        # Define the original and new dimensions
-        original_height, original_width = get_frame_size(opt.source)
-        new_width = imgsz  # The width you resized to
-        # Compute new height maintaining the aspect ratio, or set it explicitly if different
-        new_height = int(original_height * (new_width / original_width))
-
-        # Compute scaling factors
-        scale_x = new_width / original_width
-        scale_y = new_height / original_height
-
-        prior_box = []
-
-        with open(gt_path, "r") as file:
-            for line in file:
-                values = line.strip().split(",")  # Split by comma
-                obj_id = int(values[0])  # Extract ID
-                # Extract bbox (x, y, width, height)
-                x, y, w, h = map(float, values[2:6])
-                
-                # Apply scaling to convert coordinates
-                x_scaled = x * scale_x
-                y_scaled = y * scale_y
-                w_scaled = w * scale_x
-                h_scaled = h * scale_y
-                
-                # Calculate the new coordinates for top-left and bottom-right corners
-                x1, y1 = x_scaled, y_scaled
-                x2, y2 = x_scaled + w_scaled, y_scaled + h_scaled
-                
-                prior_box.append([x1, y1, x2, y2, 1., 0.])
-
-        prior_box = torch.tensor(prior_box, device="cuda:0")
-
     # First frame flag
     idx = 0
+    prefixName = ""
+
 
     # To record one box per frame
     os.makedirs(opt.save_path_answer, exist_ok=True)
@@ -307,40 +286,78 @@ def detect(save_img=False):
         t1 = time_synchronized()
 
 
+        # Define the original and new dimensions
+        original_height, original_width = get_frame_size(opt.source)
+        new_width = imgsz  # The width you resized to
+        # Compute new height maintaining the aspect ratio, or set it explicitly if different
+        new_height = int(original_height * (new_width / original_width))
 
-        # ===== Detect from Labels =====
+
+
+        # ===== Detect from Files =====
         if os.path.isdir(weights[0]):
 
-            fn = detectedFolder + detectedFiles[detectedIdx]
+            # should depend on image filename
+            # print(p)
+            detectedFile = str(p).split('/')[-1][:-3] + 'txt'
+            # print(detectedFile)
+            fn = detectedFolder + detectedFile
+            
 
 
-            # Read YOLO-format labels
+            # check the new sequence started or not
+            seqName = detectedFile
+            # print(seqName)    # Clip_1_00000.txt
+            clip_id = "_".join(seqName.split("_")[:2])
+            # print(clip_id)    # Clip_1
+
+            if prefixName != clip_id:
+                idx = 0
+                prefixName = copy.deepcopy(clip_id)
+
+                # Create tracker
+                tracker = BoTSORT(opt, frame_rate=30.0)
+
+
+            """
+            FileNotFoundError: [Errno 2] No such file or directory: '/data/gpfs/projects/punim2407/AntiUAV_ViA/TransVisDrone/runs/test/NPS/visualization_5_frames_hpc_b4_e1/labels/Clip_82_00000.txt'
+            """
+
             detectedBbox = []
-            with open(fn, 'r') as f:
-                for line in f:
-                    cls, cx, cy, w, h, conf = map(float, line.strip().split())
-                    # convert center/width/height -> x1, y1, x2, y2
-                    cx *= imgsz
-                    cy *= imgsz * original_height / original_width
-                    w *= imgsz
-                    h *= imgsz * original_height / original_width
-                    detectedBbox.append([cx, cy, w, h, conf])
 
-            # Create pred tensor based on how many bboxes there are
-            num_boxes = len(detectedBbox)
-            pred = torch.zeros((1, 5, num_boxes), dtype=torch.float16, device='cuda')
+            # Try to read YOLO-format label file
+            if os.path.exists(fn):
 
-            # Fill in detections
-            for i, det in enumerate(detectedBbox):
-                pred[0, 0, i] = det[0]  # x
-                pred[0, 1, i] = det[1]  # y
-                pred[0, 2, i] = det[2]  # w
-                pred[0, 3, i] = det[3]  # h
-                pred[0, 4, i] = det[4]  # conf
+                with open(fn, 'r') as f:
+                    for line in f:
+                        cls, cx, cy, w, h, conf = map(float, line.strip().split())
+                        # convert center/width/height -> x1, y1, x2, y2
+                        cx *= imgsz
+                        cy *= imgsz * original_height / original_width
+                        w *= imgsz
+                        h *= imgsz * original_height / original_width
+                        detectedBbox.append([cx, cy, w, h, conf])
 
-            # print(pred.shape)  # e.g., torch.Size([1, 5, 3]) if 3 boxes
+                # Create pred tensor based on how many bboxes there are
+                num_boxes = len(detectedBbox)
+                pred = torch.zeros((1, 5, num_boxes), dtype=torch.float16, device='cuda')
 
-            # sys.exit()
+                # Fill in detections
+                for i, det in enumerate(detectedBbox):
+                    pred[0, 0, i] = det[0]  # x
+                    pred[0, 1, i] = det[1]  # y
+                    pred[0, 2, i] = det[2]  # w
+                    pred[0, 3, i] = det[3]  # h
+                    pred[0, 4, i] = det[4]  # conf
+
+                # print(pred.shape)  # e.g., torch.Size([1, 5, 3]) if 3 boxes
+
+                # sys.exit()
+
+            else:
+                pred = torch.empty((1, 5, 0), dtype=torch.float16, device='cuda')
+                print(f"[WARN] Missing label file: {fn}")
+
 
 
         # ===== Detect from Models =====
@@ -370,21 +387,82 @@ def detect(save_img=False):
         # Apply Classifier
         if classify:
             pred = apply_classifier(pred, modelc, img, im0s)
-        
+
+
+
 
         ################
         # first frame use gt, no need to detect
         ################
-        if opt.with_pos:
+        if opt.with_pos and idx == 0:
 
-            if idx == 0:
-                # init_loc = [[prior_box[0], prior_box[1], prior_box[0]+prior_box[2], prior_box[1]+prior_box[3], 1., 0.]]
-                # init_loc = torch.tensor(init_loc, device="cuda:0")
-                pred = prior_box
+
+
+
+            # Prior Knowledge: Load ground truth from IR_label.json (expected format: {"gt_rect": [[x, y, w, h]]})
+            # could be empty (MultiUAV-068)
+
+
+            # ===== Detect from Files =====
+            if os.path.isdir(weights[0]):
+
+                # now opt.pos_config should be a folder
+                # and need to use the mapping to know the original sequence
+                
+                # Example usages
+                # print(forward["BB1_00"])    # Clip_1
+                # print(reverse["Clip_1"])    # BB1_00
+                originalSeqName = reverse[clip_id] + '.txt'    # BB1_00.txt
+                gt_path = opt.pos_config + originalSeqName
+
+                # print(fn)
+                # print(gt_path)
+
+
+            # ===== Detect from Models =====
             else:
-                pass
 
-            idx += 1
+                gt_path = opt.pos_config
+            
+
+            prior_box = []
+
+
+            # Compute scaling factors
+            scale_x = new_width / original_width
+            scale_y = new_height / original_height
+
+            prior_box = []
+
+            with open(gt_path, "r") as file:
+                for line in file:
+                    values = line.strip().split(",")  # Split by comma
+                    obj_id = int(values[0])  # Extract ID
+                    # Extract bbox (x, y, width, height)
+                    x, y, w, h = map(float, values[2:6])
+                    
+                    # Apply scaling to convert coordinates
+                    x_scaled = x * scale_x
+                    y_scaled = y * scale_y
+                    w_scaled = w * scale_x
+                    h_scaled = h * scale_y
+                    
+                    # Calculate the new coordinates for top-left and bottom-right corners
+                    x1, y1 = x_scaled, y_scaled
+                    x2, y2 = x_scaled + w_scaled, y_scaled + h_scaled
+                    
+                    prior_box.append([x1, y1, x2, y2, 1., 0.])
+
+            prior_box = torch.tensor(prior_box, device="cuda:0")
+
+
+            # init_loc = [[prior_box[0], prior_box[1], prior_box[0]+prior_box[2], prior_box[1]+prior_box[3], 1., 0.]]
+            # init_loc = torch.tensor(init_loc, device="cuda:0")
+            pred = prior_box
+
+
+        idx += 1
+
 
         pred = [pred]    # [tensor([[], []])]
         # print(pred)
@@ -392,8 +470,6 @@ def detect(save_img=False):
         # if prior is not empty
         if pred[0].numel() != 0:
 
-            # Process detections
-            results = []
 
             for i, det in enumerate(pred):  # detections per image
                 if webcam:  # batch_size >= 1
@@ -432,13 +508,16 @@ def detect(save_img=False):
                         online_cls.append(t.cls)
 
                         # save results
-                        results.append(
-                            f"{i + 1},{tid},{tlwh[0]:.2f},{tlwh[1]:.2f},{tlwh[2]:.2f},{tlwh[3]:.2f},{t.score:.2f},-1,-1,-1\n"
-                        )
 
                         # frame ID, object ID, x1, y1, w, h, confidence=1, class=1, visibility ratio=1.0]
                         # print([idx, tid, round(tlwh[0], 2), round(tlwh[1], 2), round(tlwh[2], 2), round(tlwh[3], 2), 1, 1, 1])
-                        res_list.append([idx, tid, round(tlwh[0], 2), round(tlwh[1], 2), round(tlwh[2], 2), round(tlwh[3], 2), 1, 1, 1])
+
+                        # ===== Detect from Files =====
+                        if os.path.isdir(weights[0]):
+                            res_list.append([originalSeqName, idx, tid, round(tlwh[0], 2), round(tlwh[1], 2), round(tlwh[2], 2), round(tlwh[3], 2), 1, 1, 1])
+                        
+                        else:
+                            res_list.append([idx, tid, round(tlwh[0], 2), round(tlwh[1], 2), round(tlwh[2], 2), round(tlwh[3], 2), 1, 1, 1])
 
                         if save_img or view_img:  # Add bbox to image
                             if opt.hide_labels_name:
@@ -478,21 +557,28 @@ def detect(save_img=False):
                             vid_writer = cv2.VideoWriter(save_path, cv2.VideoWriter_fourcc(*'mp4v'), fps, (w, h))
                         vid_writer.write(im0)
         else:
-            if vid_writer is None:
-                # Fallback: initialize VideoWriter even if no detections
-                if vid_cap:
-                    fps = vid_cap.get(cv2.CAP_PROP_FPS)
-                    w = int(vid_cap.get(cv2.CAP_PROP_FRAME_WIDTH))
-                    h = int(vid_cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
-                else:
-                    fps, w, h = 30, im0s.shape[1], im0s.shape[0]
-                    save_path += '.mp4'
-                vid_writer = cv2.VideoWriter(save_path, cv2.VideoWriter_fourcc(*'mp4v'), fps, (w, h))
 
-                if not vid_writer.isOpened():
-                    raise RuntimeError(f"Failed to open VideoWriter for {save_path}")
+            # ===== Detect from Files =====
+            if os.path.isdir(weights[0]):
+                cv2.imwrite(save_path, im0s)
+            
 
-            vid_writer.write(im0s)
+            else:
+                if vid_writer is None:
+                    # Fallback: initialize VideoWriter even if no detections
+                    if vid_cap:
+                        fps = vid_cap.get(cv2.CAP_PROP_FPS)
+                        w = int(vid_cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+                        h = int(vid_cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+                    else:
+                        fps, w, h = 30, im0s.shape[1], im0s.shape[0]
+                        save_path += '.mp4'
+                    vid_writer = cv2.VideoWriter(save_path, cv2.VideoWriter_fourcc(*'mp4v'), fps, (w, h))
+
+                    if not vid_writer.isOpened():
+                        raise RuntimeError(f"Failed to open VideoWriter for {save_path}")
+
+                vid_writer.write(im0s)
 
 
         detectedIdx += 1
@@ -584,6 +670,11 @@ if __name__ == '__main__':
 
     # Additional arguments
     parser.add_argument('--save_path_answer', type=str, default=None, help='Path to save the label files. If not set, "_label" is appended to source.')
+
+
+    # TransVisDrone
+    parser.add_argument('--mapping', type=str, default="", help='Path to provide the mapping.')
+
 
     opt = parser.parse_args()
 
