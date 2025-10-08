@@ -372,16 +372,16 @@ Toy example with three tracks, including SOT and MOT.
 $ cd BoT-SORT/
 
 # Track 1
-$ python tools/predict_track1.py --weights ./yolov12/weights/SOT_yolov12l.pt --source ../data/demo/SOT/Track1/ --img-size 640 --device "0" --conf-thres 0.01 --iou-thres 0.01 --track_high_thresh 0.1 --track_low_thresh 0.01 --fuse-score --agnostic-nms --min_box_area 4 --save_path_answer ./submit/track1/demo --hide-labels-name
+$ python tools/predict_track1.py --weights ./yolov12/weights/legacy/SOT_yolov12l.pt --source ../data/demo/SOT/Track1/ --img-size 640 --device "0" --conf-thres 0.01 --iou-thres 0.01 --track_high_thresh 0.1 --track_low_thresh 0.01 --fuse-score --agnostic-nms --min_box_area 4 --save_path_answer ./submit/track1/demo --hide-labels-name
 # output: ./runs/detect/, ./submit/track1/demo/
 
 # Track 2
-$ python tools/predict_track2.py --weights ./yolov12/weights/SOT_yolov12l.pt --source ../data/demo/SOT/Track2/ --img-size 640 --device "0" --conf-thres 0.01 --iou-thres 0.01 --track_high_thresh 0.1 --track_low_thresh 0.01 --fuse-score --agnostic-nms --min_box_area 1 --save_path_answer ./submit/track2/demo --hide-labels-name
+$ python tools/predict_track2.py --weights ./yolov12/weights/legacy/SOT_yolov12l.pt --source ../data/demo/SOT/Track2/ --img-size 640 --device "0" --conf-thres 0.01 --iou-thres 0.01 --track_high_thresh 0.1 --track_low_thresh 0.01 --fuse-score --agnostic-nms --min_box_area 1 --save_path_answer ./submit/track2/demo --hide-labels-name
 # output: ./runs/detect/, ./submit/track2/demo/
 
 # Track 3
-$ python tools/predict_track3.py --weights ./yolov12/weights/MOT_yolov12n.pt --source ../data/demo/MOT/ --img-size 1600 --device "0" --track_buffer 60 --save_path_answer ./submit/track3/demo --hide-labels-name
-$ python tools/predict_track3.py --weights ./yolov12/weights/MOT_yolov12n.pt --source ../data/demo/MOT/ --img-size 1600 --device "0" --track_buffer 60 --save_path_answer ./submit/track3/demo --with-reid --fast-reid-config logs/sbs_S50/config.yaml --fast-reid-weights logs/sbs_S50/model_0016.pth --hide-labels-name
+$ python tools/predict_track3.py --weights ./yolov12/weights/legacy/MOT_yolov12n.pt --source ../data/demo/MOT/ --img-size 1600 --device "0" --track_buffer 60 --save_path_answer ./submit/track3/demo --hide-labels-name
+$ python tools/predict_track3.py --weights ./yolov12/weights/legacy/MOT_yolov12n.pt --source ../data/demo/MOT/ --img-size 1600 --device "0" --track_buffer 60 --save_path_answer ./submit/track3/demo --with-reid --fast-reid-config logs/sbs_S50/config.yaml --fast-reid-weights logs/sbs_S50/model_0016.pth --hide-labels-name
 # output: ./runs/detect/, ./submit/track3/demo/
 
 # Heatmap
@@ -399,7 +399,7 @@ This project supports flexible inference on image folders and video files, with 
 
 ```bash
 python tools/inference.py \
-    --weights ./yolov12/weights/MOT_yolov12n.pt \
+    --weights ./yolov12/weights/ViA_yolov12n.pt \
     --source <path to folder or video> \
     --with-initial-positions \
     --initial-position-config <path to initial positions file (optional)> \
@@ -419,7 +419,7 @@ Below are examples of supported inference settings:
 ```bash
 # 1. Inference on Image Folder (without initial position)
 python tools/inference.py \
-    --weights ./yolov12/weights/MOT_yolov12n.pt \
+    --weights ./yolov12/weights/ViA_yolov12n.pt \
     --source ../data/demo/MOT/Test_imgs/MultiUAV-003/ \
     --img-size 1600 \
     --track_buffer 60 \
@@ -433,7 +433,7 @@ python tools/inference.py \
 
 # 2. Inference on Image Folder (with initial position)
 python tools/inference.py \
-    --weights ./yolov12/weights/MOT_yolov12n.pt \
+    --weights ./yolov12/weights/ViA_yolov12n.pt \
     --source ../data/demo/MOT/Test_imgs/MultiUAV-003/ \
     --with-initial-positions \
     --initial-position-config ../data/demo/MOT/TestLabels_FirstFrameOnly/MultiUAV-003.txt \
@@ -449,7 +449,7 @@ python tools/inference.py \
 
 # 3. Inference on Video (without initial position)
 python tools/inference.py \
-    --weights ./yolov12/weights/MOT_yolov12n.pt \
+    --weights ./yolov12/weights/ViA_yolov12n.pt \
     --source ../data/demo/MOT/MultiUAV-003.mp4 \
     --img-size 1600 \
     --track_buffer 60 \
@@ -463,7 +463,7 @@ python tools/inference.py \
 
 # 4. Inference on Video (with initial position)
 python tools/inference.py \
-    --weights ./yolov12/weights/MOT_yolov12n.pt \
+    --weights ./yolov12/weights/ViA_yolov12n.pt \
     --source ../data/demo/MOT/MultiUAV-003.mp4 \
     --with-initial-positions \
     --initial-position-config ../data/demo/MOT/TestLabels_FirstFrameOnly/MultiUAV-003.txt \
@@ -575,7 +575,7 @@ $ python tools/inference.py \
 
 # 2. Inference on MultiUAV Video
 python tools/inference.py \
-    --weights ./yolov12/weights/MOT_yolov12n.pt \
+    --weights ./yolov12/weights/ViA_yolov12n.pt \
     --source ../data/demo/MOT/MultiUAV-003.mp4 \
     --img-size 1600 \
     --track_buffer 60 \
@@ -735,8 +735,10 @@ YOLOv12-BoT-SORT-ReID/
 │       │   └── 00643.jpg
 │       ├── requirements.txt
 │       └── weights/
-│           ├── MOT_yolov12n.pt
-│           └── SOT_yolov12l.pt
+│           ├── legacy/
+│           │   ├── MOT_yolov12n.pt
+│           │   └── SOT_yolov12l.pt
+│           └── ViA_yolov12n.pt
 ├── data/
 │   ├── demo/
 │   ├── MOT/
@@ -801,11 +803,11 @@ $ python fast_reid/tools/train_net.py --config-file ./logs/sbs_S50/config.yaml M
 $ cd BoT-SORT/
 
 # Track 1
-$ python tools/predict_track1.py --weights ./yolov12/weights/SOT_yolov12l.pt --source ../data/SOT/track1_test/ --img-size 640 --device "0" --conf-thres 0.01 --iou-thres 0.01 --track_high_thresh 0.1 --track_low_thresh 0.01 --fuse-score --agnostic-nms --min_box_area 4 --save_path_answer ./submit/track1/test --hide-labels-name
+$ python tools/predict_track1.py --weights ./yolov12/weights/legacy/SOT_yolov12l.pt --source ../data/SOT/track1_test/ --img-size 640 --device "0" --conf-thres 0.01 --iou-thres 0.01 --track_high_thresh 0.1 --track_low_thresh 0.01 --fuse-score --agnostic-nms --min_box_area 4 --save_path_answer ./submit/track1/test --hide-labels-name
 # output: ./runs/detect/, ./submit/track1/test/
 
 # Track 2
-$ python tools/predict_track2.py --weights ./yolov12/weights/SOT_yolov12l.pt --source ../data/SOT/track2_test/ --img-size 640 --device "0" --conf-thres 0.01 --iou-thres 0.01 --track_high_thresh 0.1 --track_low_thresh 0.01 --fuse-score --agnostic-nms --min_box_area 1 --save_path_answer ./submit/track2/test --hide-labels-name
+$ python tools/predict_track2.py --weights ./yolov12/weights/legacy/SOT_yolov12l.pt --source ../data/SOT/track2_test/ --img-size 640 --device "0" --conf-thres 0.01 --iou-thres 0.01 --track_high_thresh 0.1 --track_low_thresh 0.01 --fuse-score --agnostic-nms --min_box_area 1 --save_path_answer ./submit/track2/test --hide-labels-name
 # output: ./runs/detect/, ./submit/track2/test/
 
 # Track 3
@@ -831,8 +833,8 @@ $ ./run_track3.sh
 
 | Model                                                                                | size<br><sup>(pixels) | AP<sup>val<br>50-95 | params<br><sup>(M) | FLOPs<br><sup>(G) | Note |
 | :----------------------------------------------------------------------------------- | :-------------------: | :-------------------:| :-----------------:| :---------------:| :----: |
-| [SOT_yolov12l.pt](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID/blob/main/BoT-SORT/yolov12/weights/SOT_yolov12l.pt) | 640                   | 67.2                 | 26.3                | 88.5               |
-| [MOT_yolov12n.pt](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID/blob/main/BoT-SORT/yolov12/weights/MOT_yolov12n.pt) ([ReID](https://huggingface.co/wish44165/YOLOv12-BoT-SORT-ReID/tree/main)) | 1600                   | 68.5                 | 2.6                | 6.3              | [#4 (Comment)](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID/issues/4#issuecomment-2959336418) |
+| [SOT_yolov12l.pt](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID/blob/main/BoT-SORT/yolov12/weights/legacy/SOT_yolov12l.pt) | 640                   | 67.2                 | 26.3                | 88.5               |
+| [MOT_yolov12n.pt](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID/blob/main/BoT-SORT/yolov12/weights/legacy/MOT_yolov12n.pt) ([ReID](https://huggingface.co/wish44165/YOLOv12-BoT-SORT-ReID/tree/main)) | 1600                   | 68.5                 | 2.6                | 6.3              | [#4 (Comment)](https://github.com/wish44165/YOLOv12-BoT-SORT-ReID/issues/4#issuecomment-2959336418) |
 
 
 
