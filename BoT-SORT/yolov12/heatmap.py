@@ -76,7 +76,7 @@ def heatmap(model, img_path, save_file='./outputs'):
 
 
 if __name__ == "__main__":
-    model = YOLO('./weights/MOT_yolov12n.pt')
+    model = YOLO('./weights/v1/MOT_yolov12n.pt')
     setattr(model.model, "_predict_once", types.MethodType(_predict_once, model.model))
 
     heatmap_dir = './outputs'

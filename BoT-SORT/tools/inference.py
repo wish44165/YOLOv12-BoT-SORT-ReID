@@ -19,6 +19,7 @@ sys.path.append('.')
 
 def try_detect_with_fallback():
     try:
+        # 1️⃣ Try site-packages ultralytics first
         print("🧪 Trying with site-packages ultralytics...")
         import ultralytics
         print("✅ Using site-packages:", ultralytics.__file__)
@@ -29,21 +30,38 @@ def try_detect_with_fallback():
 
         print("\n🔁 Retrying with local ultralytics...")
 
-        # Inject local ultralytics path
+        # 2️⃣ Inject local yolov12 path
         local_ultra_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../yolov12'))
         if local_ultra_path not in sys.path:
             sys.path.insert(0, local_ultra_path)
 
-        # Clean all ultralytics-related imports
+        # 3️⃣ Clean all ultralytics-related imports
         for mod in list(sys.modules):
             if mod.startswith("ultralytics"):
                 del sys.modules[mod]
 
-        # Now import local ultralytics
+        # 4️⃣ Import local ultralytics
         import ultralytics
         print("✅ Now using local ultralytics from:", ultralytics.__file__)
 
-        detect()
+        # 5️⃣ Import block.py first
+        from ultralytics.nn.modules import block
+        sys.modules['ultralytics.nn.modules.block'] = block
+        print("✅ Using block.py (import successful)")
+
+        # 6️⃣ Runtime fallback wrapper
+        def run_detect_with_runtime_fallback():
+            try:
+                detect()
+            except Exception as e2:
+                print(f"⚠️ Runtime error with block.py ({e2}), switching to block_v1.py...")
+                from ultralytics.nn.modules import block_v1 as block
+                sys.modules['ultralytics.nn.modules.block'] = block
+                detect()
+                print("✅ Successfully ran detect() with block_v1.py")
+
+        # Run detect with runtime fallback
+        run_detect_with_runtime_fallback()
 
 
 from ultralytics import YOLO
@@ -688,4 +706,6 @@ if __name__ == '__main__':
         if opt.update:  # update all models (to fix SourceChangeWarning)
             for opt.weights in Path(opt.weights).expanduser().glob('*.pt'):
                 strip_optimizer(opt.weights)
+
+        # Run detect() with full fallback
         try_detect_with_fallback()

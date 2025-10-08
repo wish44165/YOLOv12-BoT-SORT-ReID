@@ -15,6 +15,36 @@ random.seed(44165)
 
 sys.path.append('.')
 
+
+# Inject local yolov12 path
+local_ultra_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../yolov12'))
+if local_ultra_path not in sys.path:
+    sys.path.insert(0, local_ultra_path)
+
+# Clean ultralytics-related modules
+for mod in list(sys.modules):
+    if mod.startswith("ultralytics"):
+        del sys.modules[mod]
+
+# Import block.py first
+from ultralytics.nn.modules import block
+sys.modules['ultralytics.nn.modules.block'] = block
+print("✅ Using block.py (import successful)")
+
+# Runtime fallback wrapper
+def run_detect_with_fallback(detect_func, *args, **kwargs):
+    try:
+        # Try running detect normally
+        detect_func(*args, **kwargs)
+    except Exception as e:
+        print(f"⚠️ Runtime error with block.py ({e}), switching to block_v1.py...")
+        from ultralytics.nn.modules import block_v1 as block
+        sys.modules['ultralytics.nn.modules.block'] = block
+        # Re-run detect with block_v1
+        detect_func(*args, **kwargs)
+        print("✅ Successfully ran detect() with block_v1.py")
+
+
 from yolov12.models.experimental import attempt_load
 from yolov12.utils.datasets import LoadStreams, LoadImages
 from yolov12.utils.general import check_img_size, check_requirements, check_imshow, \
@@ -408,4 +438,4 @@ if __name__ == '__main__':
         if opt.update:  # update all models (to fix SourceChangeWarning)
             for opt.weights in Path(opt.weights).expanduser().glob('*.pt'):
                 strip_optimizer(opt.weights)
-        detect()
+        run_detect_with_fallback(detect)
