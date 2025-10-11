@@ -20,6 +20,9 @@
 <a href="https://github.com/wish44165/wish44165/tree/main/assets"><img src="https://github.com/wish44165/wish44165/blob/main/assets/msi_Cyborg_15_A12VE_badge.svg" alt="MSI"></a> 
 <a href="https://dashboard.hpc.unimelb.edu.au/"><img src="https://github.com/wish44165/wish44165/blob/main/assets/unimelb_spartan.svg" alt="Spartan"></a> 
 
+[![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)](https://medium.com/@scofield44165/ubuntu-24-04-1-getting-started-with-yolov12-bot-sort-reid-on-linux-20826ffc8224)
+[![macOS](https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=macos&logoColor=F0F0F0)](https://medium.com/@scofield44165/macos-tahoe-26-0-1-getting-started-with-yolov12-bot-sort-reid-on-mac-f87400d5b096)
+[![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)](https://medium.com/@scofield44165/windows-11-getting-started-with-yolov12-bot-sort-reid-on-windows-11-24ee1f1cd513)
 [![ResearchGate](https://img.shields.io/badge/ResearchGate-00CCBB?style=for-the-badge&logo=ResearchGate&logoColor=white)](https://www.researchgate.net/publication/390114692_Strong_Baseline_Multi-UAV_Tracking_via_YOLOv12_with_BoT-SORT-ReID)
 [![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/@scofield44165/strong-baseline-multi-uav-tracking-via-yolov12-with-bot-sort-reid-5d6b71230e39)
 [![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white)](https://www.youtube.com/playlist?list=PLfr5E6mAx5EUpqP41CPSm5Nwfqe35iwtl)
@@ -303,6 +306,10 @@ $ python tools/post_interpolation.py --input ./mid_submission --output ./post_su
 [![Colab Notebook](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1x5T6woUdV6dD_T6qdYcKG04Q2iVVHGoD?usp=sharing)
 [![Kaggle Notebook](https://img.shields.io/badge/Kaggle-Notebook-blue?logo=kaggle)](https://www.kaggle.com/code/yuhsi44165/yolov12-bot-sort/)
 
+[![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)](https://medium.com/@scofield44165/ubuntu-24-04-1-getting-started-with-yolov12-bot-sort-reid-on-linux-20826ffc8224)
+[![macOS](https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=macos&logoColor=F0F0F0)](https://medium.com/@scofield44165/macos-tahoe-26-0-1-getting-started-with-yolov12-bot-sort-reid-on-mac-f87400d5b096)
+[![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)](https://medium.com/@scofield44165/windows-11-getting-started-with-yolov12-bot-sort-reid-on-windows-11-24ee1f1cd513)
+
 <details><summary>Installation</summary>
 
 ```bash
@@ -312,8 +319,9 @@ $ git clone https://github.com/wish44165/YOLOv12-BoT-SORT-ReID.git
 $ cd YOLOv12-BoT-SORT-ReID/BoT-SORT/yolov12/
 $ wget https://github.com/Dao-AILab/flash-attention/releases/download/v2.7.3/flash_attn-2.7.3+cu11torch2.2cxx11abiFALSE-cp311-cp311-linux_x86_64.whl
 # Install dependencies (choose one):
-$ pip install -r requirements_mac.txt    # macOS
 $ pip install -r requirements.txt        # Linux
+$ pip install -r requirements_mac.txt    # macOS
+$ pip install -r requirements_win.txt    # Windows
 $ cd ../
 $ pip install torch torchvision torchaudio
 $ pip install -r requirements.txt
