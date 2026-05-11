@@ -212,7 +212,7 @@ Scenarios are categorized to evaluate tracking performance under diverse conditi
 
 
 
-<details open><summary>📹 Preview - Vision in Action: Beyond Strong Baseline</summary>
+<details><summary>📹 Preview - Vision in Action: Beyond Strong Baseline</summary>
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.16458805.svg)](https://doi.org/10.5281/zenodo.16458805)
 
@@ -221,6 +221,21 @@ Scenarios are categorized to evaluate tracking performance under diverse conditi
 [<img src="https://github.com/wish44165/YOLOv12-BoT-SORT-ReID/blob/main/assets/beyond_strong_baseline_strong_baseline.png" width="100%">](https://www.codabench.org/competitions/9888/#/results-tab)
 
 🔗 View the competition on [Codabench](https://www.codabench.org/competitions/9888/)
+
+</details>
+
+
+
+
+<details open><summary>📹 Preview - Vision in Action: Beyond Strong Baseline (LTS)</summary>
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.16458805.svg)](https://doi.org/10.5281/zenodo.16458805)
+
+[<img src="https://github.com/wish44165/YOLOv12-BoT-SORT-ReID/blob/main/assets/beyond_strong_baseline_LTS.png" width="100%">](https://www.codabench.org/competitions/16223/)
+
+[<img src="https://github.com/wish44165/YOLOv12-BoT-SORT-ReID/blob/main/assets/beyond_strong_baseline_strong_LTS_baseline.png" width="100%">](https://www.codabench.org/competitions/16223/#/results-tab)
+
+🔗 View the competition on [Codabench](https://www.codabench.org/competitions/16223/)
 
 </details>
 
@@ -278,6 +293,7 @@ $ python tools/post_interpolation.py --input ./mid_submission --output ./post_su
 
 ## 🗞️ News
 
+- **May 11, 2026**: Join now and have fun on the [Strong Baseline (LTS)](https://www.codabench.org/competitions/16223/#/results-tab) .
 - **August 1, 2025**: Submit now and challenge the [Strong Baseline](https://www.codabench.org/competitions/9888/#/results-tab) .
 - **July 30, 2025**: [Corrected test data for the BB2P_02 sequence](https://doi.org/10.5281/zenodo.16601508) to fix a minor defect.
 - **July 27, 2025**: [🏁 Beyond Strong Baseline](https://www.codabench.org/competitions/9888/) is now open for registration.
