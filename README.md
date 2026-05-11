@@ -30,7 +30,7 @@
 
 
 
-<details><summary>Preface</summary>
+<details><summary>✨ Preface</summary>
 
 The combination of YOLOv12 and BoT-SORT demonstrates strong object detection and tracking potential yet remains underexplored in current literature and implementations.
 
@@ -53,7 +53,7 @@ This repository provides a strong baseline for multi-UAV tracking in thermal inf
 
 
 
-<details><summary>📹 Preview - Strong Baseline</summary>
+<details open><summary>📹 Preview - Strong Baseline</summary>
 
 [strong_baseline.webm](https://github.com/user-attachments/assets/702b3e80-fd3c-48f0-8032-a2a97563c19f)
 
@@ -293,7 +293,7 @@ $ python tools/post_interpolation.py --input ./mid_submission --output ./post_su
 
 ## 🗞️ News
 
-- **May 11, 2026**: Join now and have fun on the [Strong Baseline (LTS)](https://www.codabench.org/competitions/16223/#/results-tab) .
+- **May 11, 2026**: Join now and have fun on the [🏁 Beyond Strong Baseline (LTS)](https://www.codabench.org/competitions/16223/) .
 - **August 1, 2025**: Submit now and challenge the [Strong Baseline](https://www.codabench.org/competitions/9888/#/results-tab) .
 - **July 30, 2025**: [Corrected test data for the BB2P_02 sequence](https://doi.org/10.5281/zenodo.16601508) to fix a minor defect.
 - **July 27, 2025**: [🏁 Beyond Strong Baseline](https://www.codabench.org/competitions/9888/) is now open for registration.
@@ -882,11 +882,11 @@ If you find this project helpful for your research or applications, we would app
 }
 ```
 
-<a href="https://www.star-history.com/#wish44165/YOLOv12-BoT-SORT-ReID&Date">
+<a href="https://www.star-history.com/?repos=wish44165%2FYOLOv12-BoT-SORT-ReID&type=timeline&logscale=&legend=top-left">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=wish44165/YOLOv12-BoT-SORT-ReID&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=wish44165/YOLOv12-BoT-SORT-ReID&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=wish44165/YOLOv12-BoT-SORT-ReID&type=Date" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=wish44165/YOLOv12-BoT-SORT-ReID&type=timeline&theme=dark&logscale&legend=bottom-right" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=wish44165/YOLOv12-BoT-SORT-ReID&type=timeline&logscale&legend=bottom-right" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=wish44165/YOLOv12-BoT-SORT-ReID&type=timeline&logscale&legend=bottom-right" />
  </picture>
 </a>
 
