@@ -882,11 +882,11 @@ If you find this project helpful for your research or applications, we would app
 }
 ```
 
-<a href="https://www.star-history.com/?repos=wish44165%2FYOLOv12-BoT-SORT-ReID&type=timeline&logscale=&legend=top-left">
+<a href="https://www.star-history.com/?repos=wish44165%2FYOLOv12-BoT-SORT-ReID&type=date&logscale=&legend=bottom-right">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=wish44165/YOLOv12-BoT-SORT-ReID&type=timeline&theme=dark&logscale&legend=bottom-right" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=wish44165/YOLOv12-BoT-SORT-ReID&type=timeline&logscale&legend=bottom-right" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=wish44165/YOLOv12-BoT-SORT-ReID&type=timeline&logscale&legend=bottom-right" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=wish44165/YOLOv12-BoT-SORT-ReID&type=date&theme=dark&logscale&legend=bottom-right&sealed_token=5afvtC8AZR0t9_hHIJwm0c7huAIXKTJjjc92ccGruzZdFkazKBaOOgjW8ykG-pvXo7xiGzencLM0fzuf0sM13eD3YO2iTPruxhjpKDDqkb6s1z61RctQEg" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=wish44165/YOLOv12-BoT-SORT-ReID&type=date&logscale&legend=bottom-right&sealed_token=5afvtC8AZR0t9_hHIJwm0c7huAIXKTJjjc92ccGruzZdFkazKBaOOgjW8ykG-pvXo7xiGzencLM0fzuf0sM13eD3YO2iTPruxhjpKDDqkb6s1z61RctQEg" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=wish44165/YOLOv12-BoT-SORT-ReID&type=date&logscale&legend=bottom-right&sealed_token=5afvtC8AZR0t9_hHIJwm0c7huAIXKTJjjc92ccGruzZdFkazKBaOOgjW8ykG-pvXo7xiGzencLM0fzuf0sM13eD3YO2iTPruxhjpKDDqkb6s1z61RctQEg" />
  </picture>
 </a>
 
@@ -900,3 +900,14 @@ If you find this project helpful for your research or applications, we would app
 ## 🙏 Acknowledgments
 
 Much of the code builds upon [YOLOv12](https://github.com/sunsmarterjie/yolov12), [BoT-SORT](https://github.com/NirAharon/BoT-SORT), and [TrackEval](https://github.com/JonathonLuiten/TrackEval). We also sincerely thank the organizers of the [Anti-UAV](https://github.com/ZhaoJ9014/Anti-UAV) benchmark for providing the valuable dataset. We greatly appreciate their contributions!
+
+
+
+
+
+
+
+
+## 🙌 See Also
+
+> [Edge-Aware Thermal Infrared UAV Swarm Tracking](https://arxiv.org/abs/2607.12544)
