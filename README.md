@@ -231,9 +231,9 @@ Scenarios are categorized to evaluate tracking performance under diverse conditi
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.16458805.svg)](https://doi.org/10.5281/zenodo.16458805)
 
-[<img src="https://github.com/wish44165/YOLOv12-BoT-SORT-ReID/blob/main/assets/beyond_strong_baseline_strong_LTS_leaderboard.png" width="100%">](https://www.codabench.org/competitions/16223/)
+[<img src="https://github.com/wish44165/YOLOv12-BoT-SORT-ReID/blob/main/assets/beyond_strong_baseline_LTS.png" width="100%">](https://www.codabench.org/competitions/16223/)
 
-[<img src="https://github.com/wish44165/YOLOv12-BoT-SORT-ReID/blob/main/assets/beyond_strong_baseline_strong_LTS_baseline.png" width="100%">](https://www.codabench.org/competitions/16223/#/results-tab)
+[<img src="https://github.com/wish44165/YOLOv12-BoT-SORT-ReID/blob/main/assets/beyond_strong_baseline_strong_LTS_leaderboard.png" width="100%">](https://www.codabench.org/competitions/16223/#/results-tab)
 
 🔗 View the competition on [Codabench (LTS)](https://www.codabench.org/competitions/16223/)
 
