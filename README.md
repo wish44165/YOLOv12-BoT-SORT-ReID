@@ -6,6 +6,7 @@
 > [Strong Baseline: Multi-UAV Tracking via YOLOv12 with BoT-SORT-ReID](https://openaccess.thecvf.com/content/CVPR2025W/Anti-UAV/html/Chen_Strong_Baseline_Multi-UAV_Tracking_via_YOLOv12_with_BoT-SORT-ReID_CVPRW_2025_paper.html)
 >
 > Yu-Hsi Chen
+<a href="https://orcid.org/0009-0006-1771-0289"><img src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png" width="12" alt="ORCID"></a>
 
 
 
@@ -914,14 +915,3 @@ If you find this project helpful for your research or applications, we would app
 ## 🙏 Acknowledgments
 
 Much of the code builds upon [YOLOv12](https://github.com/sunsmarterjie/yolov12), [BoT-SORT](https://github.com/NirAharon/BoT-SORT), and [TrackEval](https://github.com/JonathonLuiten/TrackEval). We also sincerely thank the organizers of the [Anti-UAV](https://github.com/ZhaoJ9014/Anti-UAV) benchmark for providing the valuable dataset. We greatly appreciate their contributions!
-
-
-
-
-
-
-
-
-## 🙌 See Also
-
-> [Edge-Aware Thermal Infrared UAV Swarm Tracking](https://arxiv.org/abs/2607.12544)
